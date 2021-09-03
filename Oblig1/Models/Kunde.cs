@@ -7,8 +7,13 @@ namespace WebApplication24.Models
 {
     public class Kunde
     {
-        public String navn { get; set; }
-
-        public string adresse { get; set; }
+        public int id { get; set; }
+        public string Fornavn { get; set; }
+        public string Etternavn { get; set; }
+        public string Telfonnr { get; set; }
+        public string Epost { get; set; }
+        public string Adresse { get; set; }
+        public string Postnr { get; set; }
+        public string Poststed { get; set; }
     }
 }
