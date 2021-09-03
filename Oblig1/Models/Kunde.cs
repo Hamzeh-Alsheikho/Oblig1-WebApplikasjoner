@@ -7,6 +7,7 @@ namespace WebApplication24.Models
 {
     public class Kunde
     {
+        //New code
         public int id { get; set; }
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
