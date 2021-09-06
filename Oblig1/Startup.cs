@@ -19,7 +19,7 @@ namespace Oblig1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<KundeDB>(options => options.UseSqlite("Data source=Kunde.db"));
+            services.AddDbContext<KundeContext>(options => options.UseSqlite("Data source=Kunde.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

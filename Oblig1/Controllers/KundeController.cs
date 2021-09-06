@@ -11,9 +11,9 @@ namespace WebApplication24.Controllers
     [Route("[Controller]/[action]")]
     public class KundeController : ControllerBase
     {
-        private readonly KundeDB _kundeDB;
+        private readonly KundeContext _kundeDB;
 
-        public KundeController(KundeDB kundeDb)
+        public KundeController(KundeContext kundeDb)
         {
             _kundeDB = kundeDb;
         }
