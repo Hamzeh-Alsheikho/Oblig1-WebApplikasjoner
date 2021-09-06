@@ -22,7 +22,7 @@ namespace WebApplication24.Controllers
         {
             try
             {
-                List<Kunde> alleKundene = await _kundeDB.kunder.Select(innKunnde => new Kunde
+                List<Kunde> alleKundene = await _kundeDB.Kunder.Select(innKunnde => new Kunde
                 {
                     Id = innKunnde.Id,
                     Fornavn = innKunnde.Fornavn,
@@ -30,11 +30,10 @@ namespace WebApplication24.Controllers
                     Telfonnr = innKunnde.Telfonnr,
                     Epost = innKunnde.Epost,
                     Adresse = innKunnde.Adresse,
-                   Postnr = innKunnde.PostSteder.Postnr,
-                   Poststed = innKunnde.postSteder.Poststed
+                    Postnr = innKunnde.PostSteder.Postnr,
+                    Poststed = innKunnde.PostSteder.Poststed
 
-                }
-                );
+                }).ToListAsync();
 
                 return alleKundene;
             }
