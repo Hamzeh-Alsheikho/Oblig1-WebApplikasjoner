@@ -17,11 +17,31 @@ namespace WebApplication24.Controllers
         {
             _kundeDB = kundeDb;
         }
-        public List<Kunde> HentAlle()
+        
+        public async Task<List<Kunde>> HentAlle()
         {
-            List<Kunde> alleKundene = _kundeDB.Kunder.ToList();
+            try
+            {
+                List<Kunde> alleKundene = await _kundeDB.kunder.Select(innKunnde => new Kunde
+                {
+                    Id = innKunnde.Id,
+                    Fornavn = innKunnde.Fornavn,
+                    Etternavn = innKunnde.Etternavn,
+                    Telfonnr = innKunnde.Telfonnr,
+                    Epost = innKunnde.Epost,
+                    Adresse = innKunnde.Adresse,
+                   Postnr = innKunnde.PostSteder.Postnr,
+                   Poststed = innKunnde.postSteder.Poststed
 
-            return alleKundene;
+                }
+                );
+
+                return alleKundene;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
