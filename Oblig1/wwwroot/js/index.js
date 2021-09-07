@@ -22,8 +22,8 @@ function formaterKunder(kunder) {
             "<td>" + kunde.adresse + "</td>" +
             "<td>" + kunde.postnr + "</td>" +
             "<td>" + kunde.poststed + "</td>" +
+            "<td>" + kunde.destination + "</td>" +
             "<td>" + kunde. + "</td>" +
-            "<td>" + kunde.poststed + "</td>" +
             "<td>" + kunde.poststed + "</td>" +
             "<td>" + kunde.poststed + "</td>" +
             "<td>" + kunde.poststed + "</td>" +

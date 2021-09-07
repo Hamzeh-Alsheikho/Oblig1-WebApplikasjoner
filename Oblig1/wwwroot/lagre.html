@@ -2,6 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <script src="js/lagre.js"></script>
     <title></title>
 </head>
 <body>
@@ -12,29 +15,30 @@
                 <h3>Kjøp billette her</h3><br>
                 <form class="form">
                     <div class="form-group">
-                        <label style="margin-right: 10px" for="Reisemåle"> Velg film:</label><select class="input" id="velgFilmen">
-                            <option></option>
-                            <option>Oslo-kie</option>
+                        <label style="margin-right: 10px" for="Reisemal"> Velg Reisemål:</label><select class="input" id="velgReisemal">
+                            <option>Oslo-kiel</option>
                             <option>Oslo- Danmark</option>
                             <option>Stavenger-Oslo</option>
                             <option>Kile- Bergen</option>
                             <option>Bergen-Danmark</option>
-                        </select><br><div style="margin-left: 70px" id="filmVelgFeil"></div>
+                        </select><br><div style="margin-left: 70px" id="reisemalVelgFeil"></div>
                     </div>
-                    <div class="form-group">
-                        <label style="margin-right: 30px" for="epost">Single Ticket:</label><input type="radio" id="singleTicket" /><br><div style="margin-left: 70px" id="epostFeil"></div>
-                        <label style="margin-right: 30px" for="epost">Klasset:</label><input type="radio" id="klasset" /><br><div style="margin-left: 70px" id="epostFeil"></div>
-                        <label style="margin-right: 30px" for="epost">Adult:</label><input type="radio" id="adult" /><br><div style="margin-left: 70px" id="epostFeil"></div>
-                        <label style="margin-right: 30px" for="epost">Barn:</label><input type="radio" id="barn" /><br><div style="margin-left: 70px" id="epostFeil"></div>
-                    </div>
-
+                </form>
+            <div class="form-group">
+                <label style="margin-right: 30px" for="antallAdult">Antall Adult</label><input type="number" min="1" id="antallAdult" size="1" /><br><div style="margin-left: 70px" id="antallAdultFile"></div>
             </div>
             <div class="form-group">
-                <label style="margin-right: 30px" for="epost">Dato:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                <label style="margin-right: 30px" for="antallChild">Antall Child</label><input type="number" min="0" id="antallChild" size="1" /><br><div style="margin-left: 70px" id="antallChildFile"></div>
             </div>
             <div class="form-group">
-
-                <label style="margin-right: 30px" for="antall">Antall:</label><input type="number" min="1" id="antall" size="1" /><br><div style="margin-left: 70px" id="antallFile"></div>
+                <label >Billett Type</label>
+                <label style="margin-right: 30px" for="single">Single</label><input type="radio" id="single" value="single" name="turType" checked="checked"/>
+                <label style="margin-right: 30px" for="turRetur">Tur-retur</label><input type="radio" id="turRetur" value="turRetur" name="turType" /><br><div style="margin-left: 70px" id="turTypeFeil"></div>
+            </div>
+                
+            <div class="form-group">
+                <label style="margin-right: 30px" for="epost">Avgang Dato</label><input type="date" id="avgang" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                <label style="margin-right: 30px" for="epost">Retur Dato</label><input type="date" id="retur" /><br><div style="margin-left: 70px" id="epostFeil"></div>
             </div>
             <div class="form-group">
                 <label style="margin-right: 15px" for="fornavn">Fornavn:</label><input type="text" id="fornavn" /><br><div style="margin-left: 70px" id="navnFeil"></div>
@@ -58,7 +62,7 @@
                 <label style="margin-right: 30px" for="epost">Poststed:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
             </div>
             </form>
-            <button class="btn btn-primary" onclick="kjopBilletter()">Kjøp billetter</button>
+            <button class="btn btn-primary" onclick="lagreKunde()">Kjøp billetter</button>
             <button class="btn btn-info" id="vis" onclick="vis()">Vis billetter</button>
         </div>
         <div class="col-md-8">
