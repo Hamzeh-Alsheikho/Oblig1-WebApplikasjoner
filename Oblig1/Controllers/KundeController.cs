@@ -25,6 +25,9 @@ namespace WebApplication24.Controllers
             {
                 var nyKundeRad = new Kunder();
                 nyKundeRad.Fornavn = innKunde.Fornavn;
+                nyKundeRad.Fornavn = innKunde.Fornavn;
+                nyKundeRad.Fornavn = innKunde.Fornavn;
+                nyKundeRad.Fornavn = innKunde.Fornavn;
                 nyKundeRad.Etternavn = innKunde.Etternavn;
                 nyKundeRad.Telfonnr = innKunde.Telfonnr;
                 nyKundeRad.Epost = innKunde.Epost;

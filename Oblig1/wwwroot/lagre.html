@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Kjøp billette her</h3><br>
+                <form class="form">
+                    <div class="form-group">
+                        <label style="margin-right: 10px" for="Reisemåle"> Velg film:</label><select class="input" id="velgFilmen">
+                            <option></option>
+                            <option>Oslo-kie</option>
+                            <option>Oslo- Danmark</option>
+                            <option>Stavenger-Oslo</option>
+                            <option>Kile- Bergen</option>
+                            <option>Bergen-Danmark</option>
+                        </select><br><div style="margin-left: 70px" id="filmVelgFeil"></div>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right: 30px" for="epost">Single Ticket:</label><input type="radio" id="singleTicket" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                        <label style="margin-right: 30px" for="epost">Klasset:</label><input type="radio" id="klasset" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                        <label style="margin-right: 30px" for="epost">Adult:</label><input type="radio" id="adult" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                        <label style="margin-right: 30px" for="epost">Barn:</label><input type="radio" id="barn" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                    </div>
+
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 30px" for="epost">Dato:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+            </div>
+            <div class="form-group">
+
+                <label style="margin-right: 30px" for="antall">Antall:</label><input type="number" min="1" id="antall" size="1" /><br><div style="margin-left: 70px" id="antallFile"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 15px" for="fornavn">Fornavn:</label><input type="text" id="fornavn" /><br><div style="margin-left: 70px" id="navnFeil"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 7px" for="etternavn">Etternavn:</label><input type="text" id="etternavn" /><br><div style="margin-left: 70px" id="etternavnfeil"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 8px" for="telefonner">Telefonnr:</label><input type="number" min="0" id="telefonner" /><br><div style="margin-left: 70px" id="telefonnrFeil"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 30px" for="epost">Epost:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 30px" for="epost">Adresse:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 30px" for="epost">Postnr:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+            </div>
+            <div class="form-group">
+                <label style="margin-right: 30px" for="epost">Poststed:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+            </div>
+            </form>
+            <button class="btn btn-primary" onclick="kjopBilletter()">Kjøp billetter</button>
+            <button class="btn btn-info" id="vis" onclick="vis()">Vis billetter</button>
+        </div>
+        <div class="col-md-8">
+            <div style="margin-left: 30px"><h3>Alle billetter</h3></div><br>
+            <table id="kvittering" width="90%" style="background-color: #E7E8E8"></table> <br><br>
+            <button style="margin-left: 30px" class="btn btn-danger" onclick="nullstille()">Slett alle billettene</button>
+            <div id="kundene"></div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
