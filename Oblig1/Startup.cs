@@ -28,6 +28,7 @@ namespace Oblig1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                DBInitialize.Initialize(app);
             }
 
             app.UseRouting();

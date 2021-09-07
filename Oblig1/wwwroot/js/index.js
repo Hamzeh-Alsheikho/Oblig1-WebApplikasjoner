@@ -17,10 +17,15 @@ function formaterKunder(kunder) {
         ut += "<tr>" +
             "<td>" + kunde.fornavn + "</td>" +
             "<td>" + kunde.etternavn + "</td>" +
-            "<td>" + kunde.telefonnr + "</td>" +
+            "<td>" + kunde.telfonnr + "</td>" +
             "<td>" + kunde.epost + "</td>" +
             "<td>" + kunde.adresse + "</td>" +
             "<td>" + kunde.postnr + "</td>" +
+            "<td>" + kunde.poststed + "</td>" +
+            "<td>" + kunde. + "</td>" +
+            "<td>" + kunde.poststed + "</td>" +
+            "<td>" + kunde.poststed + "</td>" +
+            "<td>" + kunde.poststed + "</td>" +
             "<td>" + kunde.poststed + "</td>" +
             "<td> <a class='btn btn-primary' href='endre.html?id=" + kunde.id + "'>Endre</a></td>" +
             "<td> <button class='btn btn-danger' onclick='slettKunde(" + kunde.id + ")'>Slett</button></td>" +

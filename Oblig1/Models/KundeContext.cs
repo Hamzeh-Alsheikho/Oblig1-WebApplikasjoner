@@ -17,6 +17,7 @@ namespace Oblig1.Models
         public string Telfonnr { get; set; }
         public string Epost { get; set; }
         public string Adresse { get; set; }
+        virtual public Ticket Ticket { get; set; }
         virtual public PostSteder PostSteder { get; set; }
     }
     public class PostSteder
@@ -26,6 +27,20 @@ namespace Oblig1.Models
         public string Postnr { get; set; }
         public string Poststed { get; set; }
     }
+
+    public class Ticket
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string Destination { get; set; }
+        public string TicketType { get; set; } //Single or Return
+        public string TicketClass { get; set; } //Economic, Business, First
+        public string DepartureDato { get; set; }
+        public string ReturnDato { get; set; }
+        public int AntallAdult { get; set; }
+        public int AntallChild { get; set; }
+    }
+
 
     public class KundeContext : DbContext
     {
@@ -37,6 +52,8 @@ namespace Oblig1.Models
 
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<PostSteder> PostSteder { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
          optionsBuilder.UseLazyLoadingProxies();

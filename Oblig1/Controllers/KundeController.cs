@@ -25,9 +25,6 @@ namespace WebApplication24.Controllers
             {
                 var nyKundeRad = new Kunder();
                 nyKundeRad.Fornavn = innKunde.Fornavn;
-                nyKundeRad.Fornavn = innKunde.Fornavn;
-                nyKundeRad.Fornavn = innKunde.Fornavn;
-                nyKundeRad.Fornavn = innKunde.Fornavn;
                 nyKundeRad.Etternavn = innKunde.Etternavn;
                 nyKundeRad.Telfonnr = innKunde.Telfonnr;
                 nyKundeRad.Epost = innKunde.Epost;
@@ -45,6 +42,17 @@ namespace WebApplication24.Controllers
                 {
                     nyKundeRad.PostSteder = sjekkPoststed;
                 }
+
+                var nyTicket = new Ticket();
+                nyTicket.Destination = innKunde.Destination;
+                nyTicket.TicketType = innKunde.TicketType;
+                nyTicket.TicketClass = innKunde.TicketClass;
+                nyTicket.AntallAdult = innKunde.AntallAdult;
+                nyTicket.AntallChild = innKunde.AntallChild;
+                nyTicket.DepartureDato = innKunde.DepartureDato;
+                nyTicket.ReturnDato = innKunde.ReturnDato;
+                nyKundeRad.Ticket = nyTicket;
+
                 _kundeDB.Kunder.Add(nyKundeRad);
                 await _kundeDB.SaveChangesAsync();
                 return true;
@@ -62,6 +70,13 @@ namespace WebApplication24.Controllers
                 List<Kunde> alleKundene = await _kundeDB.Kunder.Select(innKunde => new Kunde
                 {
                     Id = innKunde.Id,
+                    Destination = innKunde.Ticket.Destination,
+                    TicketType = innKunde.Ticket.TicketType,
+                    TicketClass = innKunde.Ticket.TicketClass,
+                    AntallAdult = innKunde.Ticket.AntallAdult,
+                    AntallChild = innKunde.Ticket.AntallChild,
+                    DepartureDato = innKunde.Ticket.DepartureDato,
+                    ReturnDato = innKunde.Ticket.ReturnDato,
                     Fornavn = innKunde.Fornavn,
                     Etternavn = innKunde.Etternavn,
                     Telfonnr = innKunde.Telfonnr,
@@ -101,6 +116,13 @@ namespace WebApplication24.Controllers
                     }
                 }
 
+                enKunde.Ticket.Destination = endreKunde.Destination;
+                enKunde.Ticket.TicketType = endreKunde.TicketType;
+                enKunde.Ticket.TicketClass = endreKunde.TicketClass;
+                enKunde.Ticket.AntallAdult = endreKunde.AntallAdult;
+                enKunde.Ticket.AntallChild = endreKunde.AntallChild;
+                enKunde.Ticket.DepartureDato = endreKunde.DepartureDato;
+                enKunde.Ticket.ReturnDato = endreKunde.ReturnDato;
                 enKunde.Fornavn = endreKunde.Fornavn;
                 enKunde.Etternavn = endreKunde.Etternavn;
                 enKunde.Telfonnr = endreKunde.Telfonnr;
@@ -124,6 +146,13 @@ namespace WebApplication24.Controllers
                 var enKunde = new Kunde()
                 {
                     Id = hentedKunde.Id,
+                    Destination = hentedKunde.Ticket.Destination,
+                    TicketType = hentedKunde.Ticket.TicketType,
+                    TicketClass = hentedKunde.Ticket.TicketClass,
+                    AntallAdult = hentedKunde.Ticket.AntallAdult,
+                    AntallChild = hentedKunde.Ticket.AntallChild,
+                    DepartureDato = hentedKunde.Ticket.DepartureDato,
+                    ReturnDato = hentedKunde.Ticket.ReturnDato,
                     Fornavn = hentedKunde.Fornavn,
                     Etternavn = hentedKunde.Etternavn,
                     Telfonnr = hentedKunde.Telfonnr,
