@@ -21,7 +21,8 @@
         }
 
     });
-    getTicketType();
+
+     console.log(getTicketType())
 }
 
 function getTicketType() {
@@ -29,13 +30,12 @@ function getTicketType() {
     const turReturInput = document.getElementById("turRetur");
 
     const ticketArray = [singleInput, turReturInput];
-    let ticketType;
+    let type;
     
     for (let ticketType of ticketArray) {
         if (ticketType.checked) {
-            ticketType = ticketType.value;
-            return ticketType.value;  
+            type = ticketType.value
 	    }
     }
-    console.log("sfsdf", ticketType)
+    return type;
 }
