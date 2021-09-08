@@ -12,7 +12,9 @@
         departureDato: $("#avgang").val(),
         returnDato: $("#retur").val(),
         ticketClass: getKlassetType,
-    }
+        telfnnr: $("#telefonner").val(),
+        epost: $("#epost").val()
+     }
 
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (OK) {

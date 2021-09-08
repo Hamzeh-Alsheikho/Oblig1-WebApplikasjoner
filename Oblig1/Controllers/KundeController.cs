@@ -57,8 +57,9 @@ namespace WebApplication24.Controllers
                 await _kundeDB.SaveChangesAsync();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                Console.Write(e.Message);
                 return false;
             }
         }

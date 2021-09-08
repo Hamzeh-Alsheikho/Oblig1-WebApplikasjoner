@@ -15,7 +15,7 @@
                 <h3>Kjøp billette her</h3><br>
                 <form class="form">
                     <div class="form-group">
-                        <label style="margin-right: 10px" for="Reisemal"> Velg Reisemål:</label><select class="input" id="velgReisemal">
+                        <label style="margin-right: 10px" for="reiseMal"> Velg Reisemål:</label><select class="input" id="reiseMal">
                             <option></option>
                             <option>Oslo-kiel</option>
                             <option>Oslo- Danmark</option>
@@ -24,7 +24,6 @@
                             <option>Bergen-Danmark</option>
                         </select><br><div style="margin-left: 70px" id="reisemalVelgFeil"></div>
                     </div>
-                </form>
                 <div class="form-group">
                     <label style="margin-right: 30px" for="antallAdult">Antall Adult</label><input type="number" min="1" id="antallAdult" size="1" /><br><div style="margin-left: 70px" id="antallAdultFile"></div>
                 </div>
@@ -60,13 +59,13 @@
                     <label style="margin-right: 30px" for="epost">Epost:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="epost">Adresse:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                    <label style="margin-right: 30px" for="epost">Adresse:</label><input type="text" id="adresse" /><br><div style="margin-left: 70px" id="epostFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="epost">Postnr:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                    <label style="margin-right: 30px" for="epost">Postnr:</label><input type="number" id="postnr" /><br><div style="margin-left: 70px" id="epostFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="epost">Poststed:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                    <label style="margin-right: 30px" for="epost">Poststed:</label><input type="text" id="poststed" /><br><div style="margin-left: 70px" id="epostFeil"></div>
                 </div>
                 </form>
                 <button class="btn btn-primary" onclick="lagreKunde()">Kjøp billetter</button>
