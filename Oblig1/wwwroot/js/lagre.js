@@ -11,8 +11,8 @@
         ticketType: getTicketType(),
         departureDato: $("#avgang").val(),
         returnDato: $("#retur").val(),
-        ticketClass: getKlassetType,
-        telfnnr: $("#telefonner").val(),
+        ticketClass: getKlassetType(),
+        telfonnr: $("#telefonner").val(),
         epost: $("#epost").val()
      }
 
