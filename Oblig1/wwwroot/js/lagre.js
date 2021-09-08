@@ -8,7 +8,10 @@
         destination: $("#reiseMal").val(),
         antallAdult: $("#antallAdult").val(),
         antallChild: $("#antallChild").val(),
-        ticketType: getTicketType()
+        ticketType: getTicketType(),
+        departureDato: $("#avgang").val(),
+        returnDato: $("#retur").val(),
+        ticketClass: getKlassetType,
     }
 
     const url = "Kunde/Lagre";
@@ -21,8 +24,6 @@
         }
 
     });
-
-     console.log(getTicketType())
 }
 
 function getTicketType() {
@@ -36,6 +37,21 @@ function getTicketType() {
         if (ticketType.checked) {
             type = ticketType.value
 	    }
+    }
+    return type;
+}
+function getKlassetType() {
+    const econonyInput = document.getElementById("economy");
+    const fristClassInput = document.getElementById("first_Class");
+    const businessInput = document.getElementById("business");
+
+    const klassetArray = [econonyInput, fristClassInput, businessInput];
+
+    let type;
+    for (let klassetType of klassetArray) {
+        if (klassetType.checked) {
+            type = klassetType.value
+        }
     }
     return type;
 }
