@@ -158,7 +158,9 @@ namespace WebApplication24.Controllers
                     Etternavn = hentedKunde.Etternavn,
                     Telfonnr = hentedKunde.Telfonnr,
                     Epost = hentedKunde.Epost,
-                    Adresse = hentedKunde.Adresse
+                    Adresse = hentedKunde.Adresse,
+                    Postnr = hentedKunde.PostSteder.Postnr,
+                    Poststed = hentedKunde.PostSteder.Poststed
                 };
                 return enKunde;
             }
