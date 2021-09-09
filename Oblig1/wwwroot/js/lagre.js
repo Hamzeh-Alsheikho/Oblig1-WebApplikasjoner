@@ -13,7 +13,7 @@
         returnDato: $("#retur").val(),
         ticketClass: getKlassetType(),
         telfonnr: $("#telefonner").val(),
-        epost: $("#epost").val()
+        epost: $("#epost").val(),
      }
 
     const url = "Kunde/Lagre";
