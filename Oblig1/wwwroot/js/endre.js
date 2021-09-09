@@ -2,18 +2,11 @@
 
 $(function () {
     // hent kunden med kunde-id fra url og vis denne i skjemaet. 
-    //Changing format from database to html
-    function formatDate(dateString) {
-        const dateArr = dateString.split(".");
-        const formattedDate = dateArr[2] + "-" + dateArr[1] + "-" + dateArr[0]
-        return formattedDate;
-    }
+    
 
     const id = window.location.search.substring(1);
     const url = "Kunde/HentEn?" + id;
     $.get(url, function (kunde) {
-        const departureDate = formatDate(kunde.departureDato);
-        const returnDato = formatDate(kunde.returnDato)
         $("#fornavn").val(kunde.fornavn);
         $("#etternavn").val(kunde.etternavn);
         $("#adresse").val(kunde.adresse);
@@ -23,8 +16,8 @@ $(function () {
         $("#antallAdult").val(kunde.antallAdult);
         $("#antallChild").val(kunde.antallChild);
         $("ticketType").val(kunde.ticketType);
-        $("#avgang").val(departureDate);
-         $("#retur").val(returnDato);
+        $("#avgang").val(kunde.departureDato);
+        $("#retur").val(kunde.returnDato);
          $("#telefonner").val(kunde.telfonnr);
         $("#epost").val(kunde.epost);
     });
