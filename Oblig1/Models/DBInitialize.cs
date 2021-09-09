@@ -21,8 +21,8 @@ namespace Oblig1.Models
             var poststed1 = new PostSteder { Postnr = "0010", Poststed = "Oslo" };
             var poststed2 = new PostSteder { Postnr = "0015", Poststed = "Oslo" };
 
-            var ticket1 = new Ticket { Destination = "Oslo - Denmark", TicketType = "Single", TicketClass = "Business", AntallAdult = 2, AntallChild = 0, DepartureDato = "25.11.2021", ReturnDato =""};
-            var ticket2 = new Ticket { Destination = "Oslo - Kiel", TicketType = "Return", TicketClass = "Economy", AntallAdult = 1, AntallChild = 1, DepartureDato = "24.12.2021", ReturnDato ="03.01.2023"};
+            var ticket1 = new Ticket { Destination = "Oslo-kiel", TicketType = "En vei", TicketClass = "Business", AntallAdult = 2, AntallChild = 0, DepartureDato = "2021-11-23", ReturnDato =""};
+            var ticket2 = new Ticket { Destination = "Stavenger-Oslo", TicketType = "Retur", TicketClass = "Economy", AntallAdult = 1, AntallChild = 1, DepartureDato = "2021-12-24", ReturnDato ="2023-01-03"};
             
             var kunde1 = new Kunder { Fornavn = "Tor", Etternavn = "Nordman", Telfonnr = "12345678", Epost = "xxx@oslomet.no", Adresse = "Pilestredet 35", PostSteder = poststed1, Ticket = ticket1};
             var kunde2 = new Kunder { Fornavn = "Morten", Etternavn = "Nordman", Telfonnr = "98765432", Epost = "zzz@oslomet.no", Adresse = "Pilestredet 32", PostSteder = poststed2, Ticket = ticket2};
