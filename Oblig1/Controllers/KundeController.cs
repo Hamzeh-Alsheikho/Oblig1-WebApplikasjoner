@@ -104,7 +104,7 @@ namespace WebApplication24.Controllers
                 if(enKunde.PostSteder.Postnr != endreKunde.Postnr)
                 {
                     var sjekkPoststed = _kundeDB.PostSteder.Find(endreKunde.Postnr);
-                    if(endreKunde.Postnr == null)
+                    if(sjekkPoststed == null)
                     {
                         var nyPoststedsRad = new PostSteder();
                         nyPoststedsRad.Postnr = endreKunde.Postnr;
@@ -113,7 +113,7 @@ namespace WebApplication24.Controllers
                     }
                     else
                     {
-                        enKunde.PostSteder = sjekkPoststed;
+                        enKunde.PostSteder.Postnr = endreKunde.Postnr;
                     }
                 }
 

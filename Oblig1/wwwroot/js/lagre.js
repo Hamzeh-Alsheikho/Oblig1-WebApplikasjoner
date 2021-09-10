@@ -3,7 +3,7 @@
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
-        postnr: $("#postnr").val(),
+        postnr: parseInt($("#postnr").val()),
         poststed: $("#poststed").val(),
         destination: $("#reiseMal").val(),
         antallAdult: $("#antallAdult").val(),
@@ -13,7 +13,7 @@
         returnDato: $("#retur").val(),
         ticketClass: getKlassetType(),
         telfonnr: $("#telefonner").val(),
-        epost: $("#epost").val()
+        epost: $("#epost").val(),
      }
 
     const url = "Kunde/Lagre";
