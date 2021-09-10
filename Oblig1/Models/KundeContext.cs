@@ -30,8 +30,7 @@ namespace Oblig1.Models
 
     public class Ticket
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         public string Destination { get; set; }
         public string TicketType { get; set; } //Single or Return
         public string TicketClass { get; set; } //Economic, Business, First
