@@ -45,8 +45,12 @@ $(function () {
 });
 
 function endreKunde() {
+    const idString = window.location.search.substring(1);
+    const idStringArr = idString.split("=");
+    const id = idStringArr[1]
     const kunde = {
-        id: $("#id").val(), // må ha med denne som ikke har blitt endret for å vite hvilken kunde som skal endres
+        //id: $("#id").val(), // må ha med denne som ikke har blitt endret for å vite hvilken kunde som skal endres
+        id: id,
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
