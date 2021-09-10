@@ -54,7 +54,7 @@ function endreKunde() {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
-        postnr: parseInt($("#postnr").val()),
+        postnr: ($("#postnr").val()),
         poststed: $("#poststed").val(),
         destination: $("#reiseMal").val(),
         antallAdult: $("#antallAdult").val(),
