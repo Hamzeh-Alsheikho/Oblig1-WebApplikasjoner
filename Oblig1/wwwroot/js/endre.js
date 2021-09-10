@@ -12,7 +12,8 @@ $(function () {
         $("#adresse").val(kunde.adresse);
         $("#postnr").val(kunde.postnr);
          $("#poststed").val(kunde.poststed);
-        $("#reiseMal").val(kunde.destination);
+        $("#reiseMalFra").val(kunde.destinationFrom);
+        $("#reiseMalTil").val(kunde.destinationTo);
         $("#antallAdult").val(kunde.antallAdult);
         $("#antallChild").val(kunde.antallChild);
         $("ticketType").val(kunde.ticketType);
@@ -56,7 +57,8 @@ function endreKunde() {
         adresse: $("#adresse").val(),
         postnr: ($("#postnr").val()),
         poststed: $("#poststed").val(),
-        destination: $("#reiseMal").val(),
+        destinationFrom: $("#reiseMalFra").val(),
+        destinationTo: $("#reiseMalTil").val(),
         antallAdult: $("#antallAdult").val(),
         antallChild: $("#antallChild").val(),
         ticketType: getTicketType(),

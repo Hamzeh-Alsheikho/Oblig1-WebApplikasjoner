@@ -44,7 +44,8 @@ namespace WebApplication24.Controllers
                 }
 
                 var nyTicket = new Ticket();
-                nyTicket.Destination = innKunde.Destination;
+                nyTicket.DestinationFrom = innKunde.DestinationFrom;
+                nyTicket.DestinationTo = innKunde.DestinationTo;
                 nyTicket.TicketType = innKunde.TicketType;
                 nyTicket.TicketClass = innKunde.TicketClass;
                 nyTicket.AntallAdult = innKunde.AntallAdult;
@@ -71,7 +72,8 @@ namespace WebApplication24.Controllers
                 List<Kunde> alleKundene = await _kundeDB.Kunder.Select(innKunde => new Kunde
                 {
                     Id = innKunde.Id,
-                    Destination = innKunde.Ticket.Destination,
+                    DestinationFrom = innKunde.Ticket.DestinationFrom,
+                    DestinationTo = innKunde.Ticket.DestinationTo,
                     TicketType = innKunde.Ticket.TicketType,
                     TicketClass = innKunde.Ticket.TicketClass,
                     AntallAdult = innKunde.Ticket.AntallAdult,
@@ -117,7 +119,8 @@ namespace WebApplication24.Controllers
                     }
                 }
 
-                enKunde.Ticket.Destination = endreKunde.Destination;
+                enKunde.Ticket.DestinationFrom = endreKunde.DestinationFrom;
+                enKunde.Ticket.DestinationTo = endreKunde.DestinationTo;
                 enKunde.Ticket.TicketType = endreKunde.TicketType;
                 enKunde.Ticket.TicketClass = endreKunde.TicketClass;
                 enKunde.Ticket.AntallAdult = endreKunde.AntallAdult;
@@ -147,7 +150,8 @@ namespace WebApplication24.Controllers
                 var enKunde = new Kunde()
                 {
                     Id = hentedKunde.Id,
-                    Destination = hentedKunde.Ticket.Destination,
+                    DestinationFrom = hentedKunde.Ticket.DestinationFrom,
+                    DestinationTo = hentedKunde.Ticket.DestinationTo,
                     TicketType = hentedKunde.Ticket.TicketType,
                     TicketClass = hentedKunde.Ticket.TicketClass,
                     AntallAdult = hentedKunde.Ticket.AntallAdult,

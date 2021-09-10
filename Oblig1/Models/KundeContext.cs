@@ -31,7 +31,8 @@ namespace Oblig1.Models
     public class Ticket
     {
         public int Id { get; set; }
-        public string Destination { get; set; }
+        public string DestinationFrom { get; set; }
+        public string DestinationTo { get; set; }
         public string TicketType { get; set; } //Single or Return
         public string TicketClass { get; set; } //Economic, Business, First
         public string DepartureDato { get; set; }
