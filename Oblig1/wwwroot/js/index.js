@@ -39,8 +39,13 @@ function formaterKunder(kunder) {
 }
 function slettBillett(id) {
     const url = "Kunde/Slett?id="+id;
-    $.get(url, function () {
-        window.location.href = 'index.html';
+    $.get(url, function (ok) {
+        if (ok) {
+            window.location.href = 'index.html';
+        }
+         else {
+          $("#feil").html("Feil i db - prøv igjen senere");
+        }
     });
   
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Oblig1.DAL;
 using Oblig1.Models;
 using WebApplication24.Models;
 
@@ -12,181 +14,60 @@ namespace WebApplication24.Controllers
     [Route("[Controller]/[action]")]
     public class KundeController : ControllerBase
     {
-        private readonly KundeContext _kundeDB;
+        private readonly IKundeRepository _kundeDB;
+        private ILogger<KundeController> _kundeLog;
 
-        public KundeController(KundeContext kundeDb)
+        public KundeController(IKundeRepository kundeDB, ILogger<KundeController> kundeLog)
         {
-            _kundeDB = kundeDb;
+            _kundeDB = kundeDB;
+            _kundeLog = kundeLog;
         }
-        
-        public  async Task<bool> Lagre(Kunde innKunde)
+        public async Task<ActionResult> Lagre(Kunde innKunde)
         {
-            try
+            bool returnOk = await _kundeDB.Lagre(innKunde);
+            if (!returnOk)
             {
-                var nyKundeRad = new Kunder();
-                nyKundeRad.Fornavn = innKunde.Fornavn;
-                nyKundeRad.Etternavn = innKunde.Etternavn;
-                nyKundeRad.Telfonnr = innKunde.Telfonnr;
-                nyKundeRad.Epost = innKunde.Epost;
-                nyKundeRad.Adresse = innKunde.Adresse;
-
-                var sjekkPoststed = await _kundeDB.PostSteder.FindAsync(innKunde.Postnr); // await and FindAsync check later
-                if (sjekkPoststed == null)
-                {
-                    var nyPoststedRad = new PostSteder();
-                    nyPoststedRad.Postnr = innKunde.Postnr;
-                    nyPoststedRad.Poststed = innKunde.Poststed;
-                    nyKundeRad.PostSteder = nyPoststedRad;
-                }
-                else
-                {
-                    nyKundeRad.PostSteder = sjekkPoststed;
-                }
-
-                var nyTicket = new Ticket();
-                nyTicket.DestinationFrom = innKunde.DestinationFrom;
-                nyTicket.DestinationTo = innKunde.DestinationTo;
-                nyTicket.TicketType = innKunde.TicketType;
-                nyTicket.TicketClass = innKunde.TicketClass;
-                nyTicket.AntallAdult = innKunde.AntallAdult;
-                nyTicket.AntallChild = innKunde.AntallChild;
-                nyTicket.DepartureDato = innKunde.DepartureDato;
-                nyTicket.ReturnDato = innKunde.ReturnDato;
-                nyKundeRad.Ticket = nyTicket;
-
-                _kundeDB.Kunder.Add(nyKundeRad);
-                await _kundeDB.SaveChangesAsync();
-                return true;
+                _kundeLog.LogInformation("Kunne ikke lagre kunden");
+                return BadRequest("Kunne ikke lagre kunden");
             }
-            catch(Exception e)
-            {
-                Console.Write(e.Message);
-                return false;
-            }
+            return Ok("Kunde ble lagret");
         }
 
-        public async Task<List<Kunde>> HentAlle()
+        public async Task<ActionResult<Kunde>> HentAlle()
         {
-            try
-            {
-                List<Kunde> alleKundene = await _kundeDB.Kunder.Select(innKunde => new Kunde
-                {
-                    Id = innKunde.Id,
-                    DestinationFrom = innKunde.Ticket.DestinationFrom,
-                    DestinationTo = innKunde.Ticket.DestinationTo,
-                    TicketType = innKunde.Ticket.TicketType,
-                    TicketClass = innKunde.Ticket.TicketClass,
-                    AntallAdult = innKunde.Ticket.AntallAdult,
-                    AntallChild = innKunde.Ticket.AntallChild,
-                    DepartureDato = innKunde.Ticket.DepartureDato,
-                    ReturnDato = innKunde.Ticket.ReturnDato,
-                    Fornavn = innKunde.Fornavn,
-                    Etternavn = innKunde.Etternavn,
-                    Telfonnr = innKunde.Telfonnr,
-                    Epost = innKunde.Epost,
-                    Adresse = innKunde.Adresse,
-                    Postnr = innKunde.PostSteder.Postnr,
-                    Poststed = innKunde.PostSteder.Poststed
-
-                }).ToListAsync();
-
-                return alleKundene;
-            }
-            catch
-            {
-                return null;
-            }
+            List<Kunde> alleKunder = await _kundeDB.HentAlle();
+            return Ok(alleKunder);
         }
-
-        public async Task<bool> Endre(Kunde endreKunde)
+        public async Task<ActionResult> Endre(Kunde endreKunde)
         {
-            try
+            bool returnOk = await _kundeDB.Endre(endreKunde);
+            if (!returnOk)
             {
-                Kunder enKunde = await _kundeDB.Kunder.FindAsync(endreKunde.Id);
-                if(enKunde.PostSteder.Postnr != endreKunde.Postnr)
-                {
-                    var sjekkPoststed = _kundeDB.PostSteder.Find(endreKunde.Postnr);
-                    if(sjekkPoststed == null)
-                    {
-                        var nyPoststedsRad = new PostSteder();
-                        nyPoststedsRad.Postnr = endreKunde.Postnr;
-                        nyPoststedsRad.Poststed = endreKunde.Poststed;
-                        enKunde.PostSteder = nyPoststedsRad;
-                    }
-                    else
-                    {
-                        enKunde.PostSteder.Postnr = endreKunde.Postnr;
-                    }
-                }
-
-                enKunde.Ticket.DestinationFrom = endreKunde.DestinationFrom;
-                enKunde.Ticket.DestinationTo = endreKunde.DestinationTo;
-                enKunde.Ticket.TicketType = endreKunde.TicketType;
-                enKunde.Ticket.TicketClass = endreKunde.TicketClass;
-                enKunde.Ticket.AntallAdult = endreKunde.AntallAdult;
-                enKunde.Ticket.AntallChild = endreKunde.AntallChild;
-                enKunde.Ticket.DepartureDato = endreKunde.DepartureDato;
-                enKunde.Ticket.ReturnDato = endreKunde.ReturnDato;
-                enKunde.Fornavn = endreKunde.Fornavn;
-                enKunde.Etternavn = endreKunde.Etternavn;
-                enKunde.Telfonnr = endreKunde.Telfonnr;
-                enKunde.Epost = endreKunde.Epost;
-                enKunde.Adresse = endreKunde.Adresse;
-
-                await _kundeDB.SaveChangesAsync();
-                return true;
-             }
-            catch
-            {
-                return false;
+                _kundeLog.LogInformation("Kunne ikke endre kunden");
+                return NotFound("Kunne ikke endre kunden");
             }
+            return Ok("Kunde ble endret");
+           
         }
-
-        public async Task<Kunde> HentEn(int id)
+        public async Task<ActionResult> HentEn(int id)
         {
-            try
+            Kunde en = await _kundeDB.HentEn(id);
+            if(en == null)
             {
-                Kunder hentedKunde = await _kundeDB.Kunder.FindAsync(id);
-                var enKunde = new Kunde()
-                {
-                    Id = hentedKunde.Id,
-                    DestinationFrom = hentedKunde.Ticket.DestinationFrom,
-                    DestinationTo = hentedKunde.Ticket.DestinationTo,
-                    TicketType = hentedKunde.Ticket.TicketType,
-                    TicketClass = hentedKunde.Ticket.TicketClass,
-                    AntallAdult = hentedKunde.Ticket.AntallAdult,
-                    AntallChild = hentedKunde.Ticket.AntallChild,
-                    DepartureDato = hentedKunde.Ticket.DepartureDato,
-                    ReturnDato = hentedKunde.Ticket.ReturnDato,
-                    Fornavn = hentedKunde.Fornavn,
-                    Etternavn = hentedKunde.Etternavn,
-                    Telfonnr = hentedKunde.Telfonnr,
-                    Epost = hentedKunde.Epost,
-                    Adresse = hentedKunde.Adresse,
-                    Postnr = hentedKunde.PostSteder.Postnr,
-                    Poststed = hentedKunde.PostSteder.Poststed
-                };
-                return enKunde;
+                _kundeLog.LogInformation("Kunne ikke finne kunden");
+                return NotFound("Kunne ikke finne kunden");
             }
-            catch
-            {
-                return null;
-            }
+            return Ok (en);
         }
-
-        public async Task<bool> Slett(int id)
+        public async Task<ActionResult> Slett(int id)
         {
-            try
+            bool returnOk = await _kundeDB.Slett(id);
+            if (!returnOk)
             {
-                Kunder enKunde = await _kundeDB.Kunder.FindAsync(id);
-                _kundeDB.Kunder.Remove(enKunde);
-                await _kundeDB.SaveChangesAsync();
-                return true;
+                _kundeLog.LogInformation("Kunne ikke slette kunden");
+                return NotFound("Kunne ikke slette kunden");
             }
-            catch
-            {
-                return false;
-            }
+            return Ok("Kunde ble slettet");
         }
     }
 }
