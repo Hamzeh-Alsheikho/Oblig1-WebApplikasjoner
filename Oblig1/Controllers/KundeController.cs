@@ -15,6 +15,7 @@ namespace WebApplication24.Controllers
     public class KundeController : ControllerBase
     {
         private readonly IKundeRepository _kundeDB;
+
         private ILogger<KundeController> _kundeLog;
 
         public KundeController(IKundeRepository kundeDB, ILogger<KundeController> kundeLog)
@@ -24,13 +25,19 @@ namespace WebApplication24.Controllers
         }
         public async Task<ActionResult> Lagre(Kunde innKunde)
         {
-            bool returnOk = await _kundeDB.Lagre(innKunde);
-            if (!returnOk)
+            if (ModelState.IsValid)
             {
-                _kundeLog.LogInformation("Kunne ikke lagre kunden");
-                return BadRequest("Kunne ikke lagre kunden");
+                bool returnOk = await _kundeDB.Lagre(innKunde);
+                if (!returnOk)
+                {
+                    _kundeLog.LogInformation("Kunne ikke lagre kunden");
+                    return BadRequest("Kunne ikke lagre kunden");
+                }
+                return Ok("Kunde ble lagret");
             }
-            return Ok("Kunde ble lagret");
+
+            _kundeLog.LogInformation("Feil i inputValidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         public async Task<ActionResult<Kunde>> HentAlle()
@@ -38,27 +45,39 @@ namespace WebApplication24.Controllers
             List<Kunde> alleKunder = await _kundeDB.HentAlle();
             return Ok(alleKunder);
         }
+
         public async Task<ActionResult> Endre(Kunde endreKunde)
         {
+            if(ModelState.IsValid)
+            { 
             bool returnOk = await _kundeDB.Endre(endreKunde);
-            if (!returnOk)
-            {
-                _kundeLog.LogInformation("Kunne ikke endre kunden");
-                return NotFound("Kunne ikke endre kunden");
+                if (!returnOk)
+                {
+                    _kundeLog.LogInformation("Kunne ikke endre kunden");
+                    return NotFound("Kunne ikke endre kunden");
+                }
+                return Ok("Kunde ble endret");
             }
-            return Ok("Kunde ble endret");
-           
+            _kundeLog.LogInformation("Feil i inputValidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
+
         public async Task<ActionResult> HentEn(int id)
         {
-            Kunde en = await _kundeDB.HentEn(id);
-            if(en == null)
+            if (ModelState.IsValid)
             {
-                _kundeLog.LogInformation("Kunne ikke finne kunden");
-                return NotFound("Kunne ikke finne kunden");
+                Kunde en = await _kundeDB.HentEn(id);
+                if (en == null)
+                {
+                    _kundeLog.LogInformation("Kunne ikke finne kunden");
+                    return NotFound("Kunne ikke finne kunden");
+                }
+                return Ok(en);
             }
-            return Ok (en);
+            _kundeLog.LogInformation("Feil i inputValidering");
+            return BadRequest("Feil i inputValidering på server");
         }
+
         public async Task<ActionResult> Slett(int id)
         {
             bool returnOk = await _kundeDB.Slett(id);

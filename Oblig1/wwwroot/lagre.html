@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="js/lagre.js"></script>
+    <script src="js/validering.js"></script>
     <title></title>
 </head>
 <body>
@@ -55,28 +56,27 @@
                     <label style="margin-right: 30px" for="retur">Retur Dato</label><input type="date" id="retur" /><br><div style="margin-left: 70px" id="returFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 15px" for="fornavn">Fornavn:</label><input type="text" id="fornavn" /><br><div style="margin-left: 70px" id="navnFeil"></div>
+                    <label style="margin-right: 15px" for="fornavn">Fornavn:</label><input type="text" id="fornavn" onchange="valideringFornavn(this.value)"/><br><div style="margin-left:70px; color:red" id="forNavnFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 7px" for="etternavn">Etternavn:</label><input type="text" id="etternavn" /><br><div style="margin-left: 70px" id="etternavnfeil"></div>
+                    <label style="margin-right: 7px" for="etternavn">Etternavn:</label><input type="text" id="etternavn" onchange="valideringEtternavn(this.value)" /><br><div style="margin-left: 70px; color:red" id="etterNavnfeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 8px" for="telefonner">Telefonnr:</label><input type="text" min="0" id="telefonner" /><br><div style="margin-left: 70px" id="telefonnrFeil"></div>
+                    <label style="margin-right: 8px" for="telfonner">Telfonnr:</label><input type="text" min="0" id="telfonnr" onchange="valideringTelfonnr(this.value)" /><br><div style="margin-left: 70px; color: red" id="telfonnrFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="epost">Epost:</label><input type="email" id="epost" /><br><div style="margin-left: 70px" id="epostFeil"></div>
+                    <label style="margin-right: 30px" for="epost">Epost:</label><input type="email" id="epost" onchange="valideringEpost(this.value)" /><br><div style="margin-left: 70px; color: red" id="epostFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="adresse">Adresse:</label><input type="text" id="adresse" /><br><div style="margin-left: 70px" id="adresseFeil"></div>
+                    <label style="margin-right: 30px" for="adresse">Adresse:</label><input type="text" id="adresse" onchange="valideringAdresse(this.value)" /><br><div style="margin-left: 70px; color:red" id="adresseFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="postnr">Postnr:</label><input type="number" id="postnr" /><br><div style="margin-left: 70px" id="postnrFeil"></div>
+                    <label style="margin-right: 30px" for="postnr">Postnr:</label><input type="number" id="postnr" onchange="valideringPostnr(this.value)" /><br><div style="margin-left: 70px; color: red" id="postnrFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="postnr">Poststed:</label><input type="text" id="poststed" /><br><div style="margin-left: 70px" id="poststedFeil"></div>
+                    <label style="margin-right: 30px" for="poststed">Poststed:</label><input type="text" id="poststed" onchange="validerPoststed(this.value)"/><br><div style="margin-left: 70px; color: red" id="poststedFeil"></div>
                 </div>
-                </form>
-                <button class="btn btn-primary" onclick="lagreKunde()">Kjøpe billetter</button><br><div style="margin-left: 70px" id="feil"></div>
+                <input type="button" id="reg" value="Kjøp Billett" class="btn btn-primary" onclick="valideringOgLagreKunde()"><br><div style="margin-left: 70px" id="feil"></div>
             </div>
         <div class="col-md-8">
             <table id="kvittering" width="90%" style="background-color: #E7E8E8"></table> <br><br>

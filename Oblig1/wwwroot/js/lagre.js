@@ -1,4 +1,17 @@
-﻿ function lagreKunde() {
+﻿function valideringOgLagreKunde() {
+    const fornavnOK = valideringFornavn($("#fornavn").val());
+    const etternavnOK = valideringEtternavn($("#etternavn").val());
+    const adresseOK = valideringAdresse($("#adresse").val());
+    const postnrOK = valideringPostnr($("#postnr").val());
+    const poststedOK = validerPoststed($("#poststed").val());
+    const epostOK = valideringEpost($("#epost").val());
+    const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
+    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK) {
+        lagreKunde();
+    }
+}
+
+function lagreKunde() {
     const kunde = {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
@@ -13,9 +26,11 @@
         departureDato: $("#avgang").val(),
         returnDato: $("#retur").val(),
         ticketClass: getKlassetType(),
-        telfonnr: $("#telefonner").val(),
+        telfonnr: $("#telfonnr").val(),
         epost: $("#epost").val(),
      }
+
+     
 
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (OK) {
