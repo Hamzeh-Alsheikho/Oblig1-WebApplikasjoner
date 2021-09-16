@@ -27,10 +27,14 @@ function valideringEtternavn(etternavn) {
 
 
 function valideringTelfonnr(telfonnr) {
-    const regexp = /^[+]?([1-9]\d*)$/;
-    const ok = regexp.test(telfonnr)
-    if (!ok) {
+    const regexp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    const ok = regexp.test(telfonnr);
+    if (isNaN(telfonnr) ) {
         $("#telfonnrFeil").html("Må skrive nummer");
+        return false;
+    }
+    if (!ok) {
+        $("#telfonnrFeil").html("Må være minst 8 siffer e.g. +4793412342");
         return false;
     }
     else {
