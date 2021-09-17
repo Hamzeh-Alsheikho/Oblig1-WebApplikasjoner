@@ -1,4 +1,16 @@
-﻿
+﻿function valideringReiseMal() {
+    const fra = $("#reiseMalFra").val();
+    const til = $("#reiseMalTil").val();
+    if (fra === til) {
+        $("#reisemalVelgFeil").html("Velg riktig reisemål");
+        return false
+    } else {
+        $("#reisemalVelgFeil").html("");
+        return true;
+    }
+}
+
+
 function valideringFornavn(fornavn) {
     const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
     const ok = regexp.test(fornavn);
@@ -27,7 +39,7 @@ function valideringEtternavn(etternavn) {
 
 
 function valideringTelfonnr(telfonnr) {
-    const regexp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,9}$/;
+    const regexp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{2,7}$/;
     const ok = regexp.test(telfonnr);
     if (isNaN(telfonnr) ) {
         $("#telfonnrFeil").html("Må skrive nummer");

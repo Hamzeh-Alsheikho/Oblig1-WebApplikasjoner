@@ -17,20 +17,18 @@
                 <label>Reisemålet</label>
                 <form class="form">
                     <div class="form-group">
-                        <label style="margin-right: 10px" for="reiseMalFra"> Fra:</label><select class="input" id="reiseMalFra">
-                            <option></option>
+                        <label style="margin-right: 10px" for="reiseMalFra"> Fra:</label><select class="input" id="reiseMalFra" onchange="valideringReiseMal()">
                             <option>Oslo</option>
                             <option>Danmark</option>
                             <option>Stavenger</option>
                             <option>Bergen</option>
                         </select>
-                        <label style="margin: 10px " for="reiseMalTilFra"> Til:</label><select class="input" id="reiseMalTil">
-                            <option></option>
-                            <option>Oslo</option>
+                        <label style="margin: 10px " for="reiseMalTilFra"> Til:</label><select class="input" id="reiseMalTil" onchange="valideringReiseMal()">
                             <option>Danmark</option>
+                            <option>Oslo</option>
                             <option>Stavenger</option>
                             <option>Bergen</option>
-                        </select><div style="margin-left: 70px" id="reisemalVelgFeil"></div>
+                        </select><div style="margin-left: 70px; color: red" id="reisemalVelgFeil"></div>
                     </div>
                 </form>
                 <div class="form-group">
@@ -71,7 +69,7 @@
                     <label style="margin-right: 30px" for="adresse">Adresse:</label><input type="text" id="adresse" onchange="valideringAdresse(this.value)" /><br><div style="margin-left: 70px; color:red" id="adresseFeil"></div>
                 </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="postnr">Postnr:</label><input type="number" id="postnr" onchange="valideringPostnr(this.value)" /><br><div style="margin-left: 70px; color: red" id="postnrFeil"></div>
+                    <label style="margin-right: 30px" for="postnr">Postnr:</label><input type="text" id="postnr" onchange="valideringPostnr(this.value)" /><br><div style="margin-left: 70px; color: red" id="postnrFeil"></div>
                 </div>
                 <div class="form-group">
                     <label style="margin-right: 30px" for="poststed">Poststed:</label><input type="text" id="poststed" onchange="validerPoststed(this.value)"/><br><div style="margin-left: 70px; color: red" id="poststedFeil"></div>

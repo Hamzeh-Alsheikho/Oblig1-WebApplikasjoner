@@ -33,7 +33,7 @@ namespace WebApplication24.Models
         [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
         public string Etternavn { get; set; }
 
-        [RegularExpression(@"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}")]
+        [RegularExpression(@"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{2,7}")]
         public string Telfonnr { get; set; }
 
         [RegularExpression(@"[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}")]
