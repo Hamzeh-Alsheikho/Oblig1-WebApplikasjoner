@@ -27,7 +27,7 @@ function valideringEtternavn(etternavn) {
 
 
 function valideringTelfonnr(telfonnr) {
-    const regexp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    const regexp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,9}$/;
     const ok = regexp.test(telfonnr);
     if (isNaN(telfonnr) ) {
         $("#telfonnrFeil").html("Må skrive nummer");
