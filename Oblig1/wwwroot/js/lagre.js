@@ -13,6 +13,14 @@
 }
 
 function lagreKunde() {
+    let returDate;
+    const ticketType = getTicketType();
+    if (ticketType === 'En vei') {
+        returDate = $("#retur").val(" ");
+    } else {
+        returDate = $("#retur").val();
+    }
+
     const kunde = {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
@@ -30,8 +38,6 @@ function lagreKunde() {
         telfonnr: $("#telfonnr").val(),
         epost: $("#epost").val(),
      }
-
-     
 
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (OK) {

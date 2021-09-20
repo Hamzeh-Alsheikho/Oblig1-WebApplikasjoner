@@ -14,6 +14,9 @@ function formaterKunder(kunder) {
         "<th>Fornavn</th><th>Etternavn</th><th>Telfonnr</th><th>Epost</th><th>Adresse</th><th>Postnr</th><th>Poststed</th><th>Fra</th><th>Til</th><th>Billettypet</th><th>Klasset</th><th>Voksen</th><th>Barn</th><th>Avgang Dato</th><th>Retur Dato</th><th></th><th></th>" +
         "</tr>";
     for (let kunde of kunder) {
+        if (kunde.returnDato === null) {
+            kunde.returnDato = " ";
+        }
         ut += "<tr>" +
             "<td>" + kunde.fornavn + "</td>" +
             "<td>" + kunde.etternavn + "</td>" +
