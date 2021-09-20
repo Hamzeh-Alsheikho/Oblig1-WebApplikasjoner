@@ -1,4 +1,16 @@
-﻿
+﻿function valideringOgEndreKunde() {
+    const reiseMalOK = valideringReiseMal();
+    const fornavnOK = valideringFornavn($("#fornavn").val());
+    const etternavnOK = valideringEtternavn($("#etternavn").val());
+    const adresseOK = valideringAdresse($("#adresse").val());
+    const postnrOK = valideringPostnr($("#postnr").val());
+    const poststedOK = validerPoststed($("#poststed").val());
+    const epostOK = valideringEpost($("#epost").val());
+    const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
+    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK) {
+        endreKunde();
+    }
+}
 
 $(function () {
     // hent kunden med kunde-id fra url og vis denne i skjemaet. 
@@ -19,7 +31,7 @@ $(function () {
         $("ticketType").val(kunde.ticketType);
         $("#avgang").val(kunde.departureDato);
         $("#retur").val(kunde.returnDato);
-         $("#telefonner").val(kunde.telfonnr);
+         $("#telfonnr").val(kunde.telfonnr);
         $("#epost").val(kunde.epost);
 
         //Donni is here
@@ -46,6 +58,14 @@ $(function () {
 });
 
 function endreKunde() {
+        let returDate;
+    const ticketType = getTicketType();
+    if (ticketType === 'En vei') {
+        returDate = $("#retur").val(" ");
+    } else {
+        returDate = $("#retur").val();
+    }
+
     const idString = window.location.search.substring(1);
     const idStringArr = idString.split("=");
     const id = idStringArr[1]
@@ -65,10 +85,10 @@ function endreKunde() {
         departureDato: $("#avgang").val(),
         returnDato: $("#retur").val(),
         ticketClass: getKlassetType(),
-        telfonnr: $("#telefonner").val(),
+        telfonnr: $("#telfonnr").val(),
         epost: $("#epost").val()
     };
-    console.log(kunde)
+
     $.post("Kunde/endre", kunde, function (OK) {
         if (OK) {
             window.location.href = 'index.html';
@@ -110,3 +130,73 @@ function getKlassetType() {
     return type;
 }
 
+
+//New code
+
+$(function () {
+    if (getTicketType() === 'En vei') {
+        hideReturDatoInput()
+    }
+    const avgangInput = document.getElementById("avgang");
+    const returInput = document.getElementById("retur");
+
+
+    setDefaultDato(avgangInput);
+    setDefaultDato(returInput);
+
+    const currentDate = getCurrentDateString();
+    deaktivereTidligereDatoer(avgangInput, currentDate);
+    deaktivereTidligereDatoer(returInput, currentDate);
+})
+
+function onAvgangChange() {
+    if (getTicketType() === 'Retur') {
+        const avgangInput = document.getElementById("avgang")
+        const returInput = document.getElementById("retur")
+        returInput.value = avgangInput.value
+        deaktivereTidligereDatoer(returInput, avgangInput.value)
+    }
+}
+
+function onTicketTypeChange() {
+    const ticketType = getTicketType();
+    if (ticketType === 'En vei') {
+        hideReturDatoInput()
+    } else {
+        showReturDatoInput();
+        const avgangInput = document.getElementById("avgang")
+        const returInput = document.getElementById("retur")
+        returInput.value = avgangInput.value
+        deaktivereTidligereDatoer(returInput, avgangInput.value)
+    }
+}
+
+function setDefaultDato(datoInput) {
+    const currentDate = getCurrentDateString();
+    datoInput.value = currentDate;
+}
+
+function getCurrentDateString() {
+    const currentDate = new Date();
+    const month = parseInt(currentDate.getMonth()) + 1;
+    const date = currentDate.getFullYear() + "-" + month.toString().padStart(2, '0') + "-" + currentDate.getDate().toString().padStart(2, '0');
+    return date;
+}
+
+function deaktivereTidligereDatoer(datoInput, date) {
+    datoInput.setAttribute('min', date)
+}
+
+function hideReturDatoInput() {
+    const returInput = document.getElementById("retur");
+    const returLabel = document.getElementById("returLabel")
+    returInput.style.display = "none";
+    returLabel.style.display = "none";
+}
+
+function showReturDatoInput() {
+    const returInput = document.getElementById("retur");
+    const returLabel = document.getElementById("returLabel")
+    returInput.style.display = "initial";
+    returLabel.style.display = "initial";
+}
