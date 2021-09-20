@@ -74,3 +74,71 @@ function getKlassetType() {
     }
     return type;
 }
+
+$(function() {
+    if (getTicketType() === 'En vei') {
+        hideReturDatoInput()
+    }
+    const avgangInput = document.getElementById("avgang");
+    const returInput = document.getElementById("retur");
+
+  
+    setDefaultDato(avgangInput);
+    setDefaultDato(returInput);
+  
+    const currentDate = getCurrentDateString();
+    deaktivereTidligereDatoer(avgangInput, currentDate);
+    deaktivereTidligereDatoer(returInput, currentDate);
+})
+
+function onAvgangChange() {
+    if (getTicketType() === 'Retur') {
+        const avgangInput = document.getElementById("avgang")
+        const returInput = document.getElementById("retur")
+        returInput.value = avgangInput.value
+        deaktivereTidligereDatoer(returInput, avgangInput.value)
+    }
+}
+
+function onTicketTypeChange() {
+    const ticketType = getTicketType();
+    if (ticketType === 'En vei') {
+        hideReturDatoInput()
+    } else {
+        showReturDatoInput();
+        const avgangInput = document.getElementById("avgang")
+        const returInput = document.getElementById("retur")
+        returInput.value = avgangInput.value
+        deaktivereTidligereDatoer(returInput, avgangInput.value)
+    }
+}
+  
+ function setDefaultDato(datoInput) {
+    const currentDate = getCurrentDateString();
+    datoInput.value = currentDate;
+ }
+  
+ function getCurrentDateString() {
+    const currentDate = new Date();
+    const month = parseInt(currentDate.getMonth()) + 1;
+    const date = currentDate.getFullYear() + "-" + month.toString().padStart(2, '0')  + "-" + currentDate.getDate().toString().padStart(2, '0');
+    return date;
+}
+
+function deaktivereTidligereDatoer(datoInput, date) {
+    datoInput.setAttribute('min', date)
+}
+
+function hideReturDatoInput() {
+    const returInput = document.getElementById("retur");
+    const returLabel = document.getElementById("returLabel")
+    returInput.style.display = "none";
+    returLabel.style.display = "none";
+}
+
+function showReturDatoInput() {
+    const returInput = document.getElementById("retur");
+    const returLabel = document.getElementById("returLabel")
+    returInput.style.display = "initial";
+    returLabel.style.display = "initial";
+}
