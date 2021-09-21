@@ -88,5 +88,15 @@ namespace WebApplication24.Controllers
             }
             return Ok("Kunde ble slettet");
         }
+
+        public async Task<ActionResult> SlettAlle()
+        {
+            bool returnOk = await _kundeDB.SlettAlle();
+               if (!returnOk) { 
+                _kundeLog.LogInformation("Kunne ikke slette alle");
+                return NotFound("Kunne ikke slette alle");
+            }
+            return Ok("Alle ble slettet");
+        }
     }
 }

@@ -188,5 +188,22 @@ namespace Oblig1.DAL
                 return false;
             }
         }
+
+        public async Task<bool> SlettAlle()
+        {
+            try
+            {
+           
+                _kundeDB.Kunder.RemoveRange(_kundeDB.Kunder);
+                _kundeDB.PostSteder.RemoveRange(_kundeDB.PostSteder);
+                _kundeDB.Tickets.RemoveRange(_kundeDB.Tickets);
+                await _kundeDB.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

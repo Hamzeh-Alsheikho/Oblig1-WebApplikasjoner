@@ -41,14 +41,26 @@ function formaterKunder(kunder) {
     $("#kundene").html(ut);
 }
 function slettBillett(id) {
-    const url = "Kunde/Slett?id="+id;
+    const url = "Kunde/Slett?id=" + id;
     $.get(url, function (ok) {
         if (ok) {
             window.location.href = 'index.html';
         }
-         else {
-          $("#feil").html("Feil i db - prøv igjen senere");
+        else {
+            $("#feil").html("Feil i db - prøv igjen senere");
         }
     });
-  
+}
+
+
+function nullstille() {
+    const url = "Kunde/SlettAlle"
+    $.get(url, function (ok) {
+        if (ok) {
+            window.location.href = 'index.html';
+        }
+        else {
+            $("#feil").html("Feil i db - prøv igjen senere");
+        }
+    });
 }

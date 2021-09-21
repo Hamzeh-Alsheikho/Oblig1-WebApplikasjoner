@@ -13,6 +13,7 @@ namespace Oblig1.DAL
         Task<bool> Endre(Kunde endreKunde);
         Task<Kunde> HentEn(int id);
         Task<bool> Slett(int id);
+        Task<bool> SlettAlle();
 
     }
 }
