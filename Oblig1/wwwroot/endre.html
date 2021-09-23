@@ -10,76 +10,137 @@
 </head>
 <body>
     <div class="container">
-
-        <div class="row">
-            <div class="col-md-4">
-                <h3>Endre billette her</h3><br>
-                <label>Reisemålet</label>
-                <form class="form">
-                    <div class="form-group">
-                        <label style="margin-right: 10px" for="reiseMalFra"> Fra:</label><select class="input" id="reiseMalFra" onchange="valideringReiseMal()">
-                            <option>Oslo</option>
-                            <option>Danmark</option>
-                            <option>Stavanger</option>
-                            <option>Bergen</option>
-                        </select>
-                        <label style="margin: 10px " for="reiseMalTilFra"> Til:</label><select class="input" id="reiseMalTil" onchange="valideringReiseMal()">
-                            <option>Danmark</option>
-                            <option>Oslo</option>
-                            <option>Stavanger</option>
-                            <option>Bergen</option>
-                        </select><div style="margin-left: 70px; color: red" id="reisemalVelgFeil"></div>
+        <div class="col-md-12">
+            <h3>Endre billette her</h3><br>
+            <label>Reisemålet</label>
+            <form class="form">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="reiseMalFra"> Fra:</label>
+                            <select class="input" id="reiseMalFra" onchange="valideringReiseMal()">
+                                <option>Oslo</option>
+                                <option>Danmark</option>
+                                <option>Stavanger</option>
+                                <option>Bergen</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label style="margin: 10px " for="reiseMalTilFra"> Til:</label>
+                            <select class="input" id="reiseMalTil" onchange="valideringReiseMal()">
+                                <option>Danmark</option>
+                                <option>Oslo</option>
+                                <option>Stavanger</option>
+                                <option>Bergen</option>
+                            </select>
+                            <div id="reisemalVelgFeil"></div>
+                        </div>
                     </div>
-                </form>
-                <div class="form-group">
-                    <label style="margin-right: 30px" for="antallAdult">Antall Adult</label><input type="number" min="1" value="1" id="antallAdult" size="1" /><br><div style="margin-left: 70px" id="antallAdultFile"></div>
                 </div>
-                <div class="form-group">
-                    <label style="margin-right: 30px" for="antallChild">Antall Child</label><input type="number" min="0" value="0" id="antallChild" size="1" /><br><div style="margin-left: 70px" id="antallChildFile"></div>
-                </div>
-                <div class="form-group">
-                    <label>Billett Type:</label><br />
-                    <label style="margin-right: 30px" for="single">En vei</label><input type="radio" id="single" value="En vei" name="turType" checked="checked" onclick="onTicketTypeChange()" />
-                    <label style="margin-right: 30px" for="turRetur">Retur</label><input type="radio" id="turRetur" value="Retur" name="turType" onclick="onTicketTypeChange()" /><br>
-                </div>
-                <div class="form-group">
-                    <label>Klasset:</label><br />
-                    <label style="margin-right: 30px" for="economy">Economy</label><input type="radio" id="economy" value="Economy" name="klasset" checked="checked" />
-                    <label style="margin-right: 30px" for="business">Business</label><input type="radio" id="business" value="Business" name="klasset" />
-                    <label style="margin-right: 30px" for="first_Class">First_Class</label><input type="radio" id="first_Class" value="First Class" name="klasset" /><br>
 
-                </div>
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="avgang">Avgang Dato</label><input type="date" id="avgang" onchange="onAvgangChange()" /><br><div style="margin-left: 70px" id="avgangFeil"></div>
-                    <label style="margin-right: 30px" for="retur" id="returLabel">Retur Dato</label><input type="date" id="retur" /><br><div style="margin-left: 70px" id="returFeil"></div>
+                    <div class="row">
+                        <div class="col-md-4"><!-- Need to change input field size -->
+                            <label for="antallAdult">Antall Adult</label>
+                            <input type="number" min="1" value="1" id="antallAdult" />
+                            <div id="antallAdultFile"></div>
+                        </div>
+                        <div class="col-md-4"><!-- Need to change input field size -->
+                            <label for="antallChild">Antall Child</label>
+                            <input type="number" min="0" value="0" id="antallChild" />
+                            <div style="margin-left: 70px" id="antallChildFile"></div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 15px" for="fornavn">Fornavn:</label><input type="text" id="fornavn" onchange="valideringFornavn(this.value)" /><br><div style="margin-left:70px; color:red" id="forNavnFeil"></div>
+                    <label>Billett Type: </label>
+                    <input type="radio" id="single" value="En vei" name="turType" checked="checked" onclick="onTicketTypeChange()" />
+                    <label for="single">En vei</label>
+                    <input type="radio" id="turRetur" value="Retur" name="turType" onclick="onTicketTypeChange()" />
+                    <label for="turRetur">Retur</label>
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 7px" for="etternavn">Etternavn:</label><input type="text" id="etternavn" onchange="valideringEtternavn(this.value)" /><br><div style="margin-left: 70px; color:red" id="etterNavnfeil"></div>
+                    <label>Klasset: </label>
+                    <label for="economy">Economy</label>
+                    <input type="radio" id="economy" value="Economy" name="klasset" checked="checked" />
+                    <label for="business">Business</label>
+                    <input type="radio" id="business" value="Business" name="klasset" />
+                    <label for="first_Class">Førsteklass</label>
+                    <input type="radio" id="first_Class" value="First Class" name="klasset" />
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 8px" for="telfonner">Telfonnr:</label><input type="text" min="0" id="telfonnr" onchange="valideringTelfonnr(this.value)" /><br><div style="margin-left: 70px; color: red" id="telfonnrFeil"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="avgang">Avgang Dato</label>
+                            <input type="date" id="avgang" onchange="onAvgangChange()" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="retur" id="returLabel">Retur Dato</label>
+                            <input type="date" id="retur" />
+                        </div>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="epost">Epost:</label><input type="email" id="epost" onchange="valideringEpost(this.value)" /><br><div style="margin-left: 70px; color: red" id="epostFeil"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="fornavn">Fornavn:</label>
+                            <input type="text" id="fornavn" onchange="valideringFornavn(this.value)" />
+                            <div id="forNavnFeil"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="etternavn">Etternavn:</label>
+                            <input type="text" id="etternavn" onchange="valideringEtternavn(this.value)" />
+                            <div id="etterNavnfeil"></div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="adresse">Adresse:</label><input type="text" id="adresse" onchange="valideringAdresse(this.value)" /><br><div style="margin-left: 70px; color:red" id="adresseFeil"></div>
+                    <label for="telfonner">Telfonnr:</label>
+                    <input type="text" min="0" id="telfonnr" onchange="valideringTelfonnr(this.value)" />
+                    <div id="telfonnrFeil"></div>
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="postnr">Postnr:</label><input type="text" id="postnr" onchange="valideringPostnr(this.value)" /><br><div style="margin-left: 70px; color: red" id="postnrFeil"></div>
+                    <label for="epost">Epost:</label>
+                    <input type="email" id="epost" onchange="valideringEpost(this.value)" />
+                    <div id="epostFeil"></div>
                 </div>
+
                 <div class="form-group">
-                    <label style="margin-right: 30px" for="poststed">Poststed:</label><input type="text" id="poststed" onchange="validerPoststed(this.value)" /><br><div style="margin-left: 70px; color: red" id="poststedFeil"></div>
+                    <label for="adresse">Adresse:</label>
+                    <input type="text" id="adresse" onchange="valideringAdresse(this.value)" />
+                    <div id="adresseFeil"></div>
                 </div>
-                <input type="button" id="reg" value="Endre Billett" class="btn btn-primary" onclick="valideringOgEndreKunde()"><br><div style="margin-left: 70px" id="feil"></div>
-            </div>
-            <div class="col-md-8">
-                <table id="kvittering" width="90%" style="background-color: #E7E8E8"></table> <br><br>
-                <div id="kundene"></div>
-            </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="postnr">Postnr:</label>
+                            <input type="text" id="postnr" onchange="valideringPostnr(this.value)" />
+                            <div id="postnrFeil"></div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="poststed">Poststed:</label>
+                            <input type="text" id="poststed" onchange="validerPoststed(this.value)" />
+                            <div id="poststedFeil"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="button" id="reg" value="Endre Billett" class="btn btn-primary" onclick="valideringOgEndreKunde()">
+                <div id="feil"></div>
+            </form> 
+        </div>
+
+        <div class="col-md-8">
+            <table id="kvittering" width="90%" style="background-color: #E7E8E8"></table> <br><br>
+            <div id="kundene"></div>
         </div>
     </div>
 </body>
