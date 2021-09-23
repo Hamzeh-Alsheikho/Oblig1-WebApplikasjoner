@@ -14,113 +14,120 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>Kjøp billett her</h3><br>
-                
-                <label>Reisemål</label>    
-                    <form class="form">
+
+                <label>Reisemål</label>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="reiseMalFra"> Fra:</label>
+                        <select class="input" id="reiseMalFra" onchange="valideringReiseMal()">
+                            <option>Oslo</option>
+                            <option>Danmark</option>
+                            <option>Stavanger</option>
+                            <option>Bergen</option>
+                        </select>
+
+                        <label for="reiseMalTilFra"> Til:</label>
+                        <select class="input" id="reiseMalTil" onchange="valideringReiseMal()">
+                            <option>Danmark</option>
+                            <option>Oslo</option>
+                            <option>Stavanger</option>
+                            <option>Bergen</option>
+                        </select>
+                        <div color: red" id="reisemalVelgFeil"></div>
+                    </div>
+                </form>
+
                         <div class="form-group">
-                            <label for="reiseMalFra"> Fra:</label>
-                            <select class="input" id="reiseMalFra" onchange="valideringReiseMal()">
-                                <option>Oslo</option>
-                                <option>Danmark</option>
-                                <option>Stavanger</option>
-                                <option>Bergen</option>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="antallAdult">Antall voksen</label>
+                                    <input type="number" min="1" value="1" id="antallAdult" size="1" />
+                                    <div id="antallAdultFile"></div>
+                                </div>
 
-                            <label for="reiseMalTilFra"> Til:</label>
-                            <select class="input" id="reiseMalTil" onchange="valideringReiseMal()">
-                                <option>Danmark</option>
-                                <option>Oslo</option>
-                                <option>Stavanger</option>
-                                <option>Bergen</option>
-                            </select>
-                            <div color: red" id="reisemalVelgFeil"></div>
-                         </div>
-                     </form>
+                                <div class="col-md-4">
+                                    <label for="antallChild">Antall barn</label>
+                                    <input type="number" min="0" value="0" id="antallChild" size="1" />
+                                    <div style="margin-left: 70px" id="antallChildFile"></div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="antallAdult">Antall voksen</label>
-                    <input type="number" min="1" value="1" id="antallAdult" size="1" />
-                    <div id="antallAdultFile"></div>
+                        <div class="form-group">
+                            <label style="margin-right: 15px">Billetttype:</label>
+                            <input type="radio" id="single" value="En vei" name="turType" checked="checked" onclick="onTicketTypeChange()" />
+                            <label for="single">En vei </label>
+                            <input type="radio" id="turRetur" value="Retur" name="turType" onclick="onTicketTypeChange()" />
+                            <label for="turRetur">Retur</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Klasset:</label>
+                            <label for="economy">Economy</label>
+                            <input type="radio" id="economy" value="Economy" name="klasset" checked="checked" />
+                            <label for="business">Business</label>
+                            <input type="radio" id="business" value="Business" name="klasset" />
+                            <label for="first_Class">Førsteklass</label>
+                            <input type="radio" id="first_Class" value="first_Class" name="klasset" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="avgang">Avgangsdato</label>
+                            <input type="date" id="avgang" onchange="onAvgangChange()" />
+                            <label for="retur" id="returLabel">Returdato</label>
+                            <input type="date" id="retur" /><br>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="fornavn">Fornavn:</label>
+                                    <input type="text" id="fornavn" onchange="valideringFornavn(this.value)" />
+                                    <div id="forNavnFeil"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="etternavn">Etternavn:</label>
+                                    <input type="text" id="etternavn" onchange="valideringEtternavn(this.value)" />
+                                    <div id="etterNavnfeil"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telfonner">Telefonnr:</label>
+                            <input type="text" min="0" id="telfonnr" onchange="valideringTelfonnr(this.value)" />
+                            <div id="telfonnrFeil"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="epost">E-post:</label>
+                            <input type="email" id="epost" onchange="valideringEpost(this.value)" />
+                            <div id="epostFeil"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="adresse">Adresse:</label>
+                            <input type="text" id="adresse" onchange="valideringAdresse(this.value)" />
+                            <div id="adresseFeil"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postnr">Postnr:</label>
+                            <input type="text" id="postnr" onchange="valideringPostnr(this.value)" />
+                            <div id="postnrFeil"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="poststed">Poststed:</label>
+                            <input type="text" id="poststed" onchange="validerPoststed(this.value)" />
+                            <div id="poststedFeil"></div>
+                        </div>
+
+                        <input type="button" id="reg" value="Kjøp Billett" class="btn btn-primary" onclick="valideringOgLagreKunde()"><br>
+                        <div id="feil"></div>
+                    </div>
+
                 </div>
-
-                <div class="form-group">
-                    <label for="antallChild">Antall barn</label>
-                    <input type="number" min="0" value="0" id="antallChild" size="1" />
-                    <div style="margin-left: 70px" id="antallChildFile"></div>
-                </div>
-
-                <div class="form-group">
-                    <label style="margin-right: 15px">Billetttype:</label>
-                    <input type="radio" id="single" value="En vei" name="turType" checked="checked" onclick="onTicketTypeChange()"/>
-                    <label for="single">En vei </label>
-                    <input type="radio" id="turRetur" value="Retur" name="turType" onclick="onTicketTypeChange()"/>
-                    <label for="turRetur">Retur</label>
-                </div>
-
-                <div class="form-group">
-                    <label>Klasset:</label>
-                    <label for="economy">Economy</label>
-                    <input type="radio" id="economy" value="Economy" name="klasset" checked="checked" />
-                    <label for="business">Business</label>
-                    <input type="radio" id="business" value="Business" name="klasset" />
-                    <label for="first_Class">Førsteklass</label>
-                    <input type="radio" id="first_Class" value="first_Class" name="klasset" />
-                </div>
-
-                <div class="form-group">
-                    <label for="avgang">Avgangsdato</label>
-                    <input type="date" id="avgang" onchange="onAvgangChange()" />
-                    <label for="retur" id="returLabel">Returdato</label>
-                    <input type="date" id="retur" /><br>
-                </div>
-
-                <div class="form-group">
-                    <label for="fornavn">Fornavn:</label>
-                    <input type="text" id="fornavn" onchange="valideringFornavn(this.value)"/>
-                    <div id="forNavnFeil"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="etternavn">Etternavn:</label>
-                    <input type="text" id="etternavn" onchange="valideringEtternavn(this.value)" />
-                    <div id="etterNavnfeil"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="telfonner">Telefonnr:</label>
-                    <input type="text" min="0" id="telfonnr" onchange="valideringTelfonnr(this.value)" />
-                    <div id="telfonnrFeil"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="epost">E-post:</label>
-                    <input type="email" id="epost" onchange="valideringEpost(this.value)" />
-                    <div id="epostFeil"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="adresse">Adresse:</label>
-                    <input type="text" id="adresse" onchange="valideringAdresse(this.value)" />
-                    <div id="adresseFeil"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="postnr">Postnr:</label>
-                    <input type="text" id="postnr" onchange="valideringPostnr(this.value)" />
-                    <div id="postnrFeil"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="poststed">Poststed:</label>
-                    <input type="text" id="poststed" onchange="validerPoststed(this.value)"/>
-                    <div id="poststedFeil"></div>
-                </div>
-
-                <input type="button" id="reg" value="Kjøp Billett" class="btn btn-primary" onclick="valideringOgLagreKunde()"><br>
-                <div id="feil"></div>
-            </div>
-
-        </div>
     </div>
 </body>
 </html>
