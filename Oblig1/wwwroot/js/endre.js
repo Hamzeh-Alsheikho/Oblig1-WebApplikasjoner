@@ -33,9 +33,6 @@ $(function () {
          $("#telfonnr").val(kunde.telfonnr);
         $("#epost").val(kunde.epost);
 
-        console.log(kunde)
-
-        //Donni is here
         if (kunde.ticketType === 'En vei') {
             const singleInput = document.getElementById("single");
             singleInput.setAttribute("checked", "true");
@@ -56,7 +53,6 @@ $(function () {
         }
 
         if (getTicketType() === 'En vei') {
-            console.log("envie")
             hideReturDatoInput()
         }
 
@@ -127,7 +123,6 @@ function getTicketType() {
             type = ticketType.value
 	    }
     }
-    console.log(type + "sdfsdf")
     return type;
 }
 
