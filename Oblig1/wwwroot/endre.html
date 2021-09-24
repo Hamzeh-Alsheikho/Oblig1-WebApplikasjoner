@@ -26,7 +26,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label style="margin: 10px " for="reiseMalTilFra"> Til:</label>
+                            <label for="reiseMalTilFra"> Til:</label>
                             <select class="input" id="reiseMalTil" onchange="valideringReiseMal()">
                                 <option>Danmark</option>
                                 <option>Oslo</option>
@@ -41,12 +41,12 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4"><!-- Need to change input field size -->
-                            <label for="antallAdult">Antall Adult</label>
+                            <label for="antallAdult">Antall Adult: </label>
                             <input type="number" min="1" value="1" id="antallAdult" />
                             <div id="antallAdultFile"></div>
                         </div>
                         <div class="col-md-4"><!-- Need to change input field size -->
-                            <label for="antallChild">Antall Child</label>
+                            <label for="antallChild">Antall Child: </label>
                             <input type="number" min="0" value="0" id="antallChild" />
                             <div style="margin-left: 70px" id="antallChildFile"></div>
                         </div>
@@ -74,11 +74,11 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="avgang">Avgang Dato</label>
+                            <label for="avgang">Avgang Dato: </label>
                             <input type="date" id="avgang" onchange="onAvgangChange()" />
                         </div>
                         <div class="col-md-4">
-                            <label for="retur" id="returLabel">Retur Dato</label>
+                            <label for="retur" id="returLabel">Retur Dato: </label>
                             <input type="date" id="retur" />
                         </div>
                     </div>
