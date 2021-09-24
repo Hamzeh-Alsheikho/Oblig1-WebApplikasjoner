@@ -14,7 +14,6 @@
 
 $(function () {
     // hent kunden med kunde-id fra url og vis denne i skjemaet. 
-    
 
     const id = window.location.search.substring(1);
     const url = "Kunde/HentEn?" + id;
@@ -33,6 +32,8 @@ $(function () {
         $("#retur").val(kunde.returnDato);
          $("#telfonnr").val(kunde.telfonnr);
         $("#epost").val(kunde.epost);
+
+        console.log(kunde)
 
         //Donni is here
         if (kunde.ticketType === 'En vei') {
@@ -54,7 +55,22 @@ $(function () {
             firstClassInput.setAttribute("checked", "true")
         }
 
-    });
+        if (getTicketType() === 'En vei') {
+            console.log("envie")
+            hideReturDatoInput()
+        }
+
+        const avgangInput = document.getElementById("avgang");
+        const returInput = document.getElementById("retur");
+    
+        setDefaultDato(avgangInput);
+        setDefaultDato(returInput);
+    
+        const currentDate = getCurrentDateString();
+        deaktivereTidligereDatoer(avgangInput, currentDate);
+        deaktivereTidligereDatoer(returInput, currentDate);
+
+    }); 
 });
 
 function endreKunde() {
@@ -111,6 +127,7 @@ function getTicketType() {
             type = ticketType.value
 	    }
     }
+    console.log(type + "sdfsdf")
     return type;
 }
 
@@ -129,25 +146,6 @@ function getKlassetType() {
     }
     return type;
 }
-
-
-//New code
-
-$(function () {
-    if (getTicketType() === 'En vei') {
-        hideReturDatoInput()
-    }
-    const avgangInput = document.getElementById("avgang");
-    const returInput = document.getElementById("retur");
-
-
-    setDefaultDato(avgangInput);
-    setDefaultDato(returInput);
-
-    const currentDate = getCurrentDateString();
-    deaktivereTidligereDatoer(avgangInput, currentDate);
-    deaktivereTidligereDatoer(returInput, currentDate);
-})
 
 function onAvgangChange() {
     if (getTicketType() === 'Retur') {
