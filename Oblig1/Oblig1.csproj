@@ -11,4 +11,13 @@
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Image\Boat.jpg" />
+    <None Include="wwwroot\Image\Boat1.jpg" />
+  </ItemGroup>
+
 </Project>

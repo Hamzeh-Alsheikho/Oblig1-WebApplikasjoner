@@ -7,15 +7,21 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="js/index.js"></script>
     <link href="js/styilingt.css" rel="stylesheet" />
+    <title>Home</title>
+
 </head>
 <body>
+    <div class="images">
+        <img id="image" src="Image/Boat.jpg" alt="Boat">
+        <br>
+    </div>
     <div class="row">
         <div class="col-xs-8">
             <a href="lagre.html" class="btn btn-primary">Kjøp billetter</a><br>
-            <div style="margin-left: 30px"><h3>Alle billetter</h3></div><br>
+            <div ><h3>Alle billetter</h3></div><br>
             <div id="feil"></div>
-            <div  style="margin-left: 30px" id="kundene"></div>
-                <button style="margin-left: 30px" class="btn btn-danger" onclick="nullstille()">Slett alle billettene</button><div style="margin-left: 70px" id="feil"></div>
+            <div id="kundene"></div>
+            <button class="btn btn-danger" onclick="nullstille()">Slett alle billettene</button><div style="margin-left: 70px" id="feil"></div>
         </div>
     </div>
 </body>
