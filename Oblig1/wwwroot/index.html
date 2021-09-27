@@ -13,17 +13,19 @@
 <body>
     <div class="row">
         <div id="homeContainer" class="container-fluid">
-            <div>
-                <img id="image" src="Image/Boat.jpg" alt="Boat">
+            <div class="header">
+                <img id="image" src="Image/island.jpeg" alt="Boat">
                 <br>
-                <div><h3>Serf dept i histoy med oss. Book plassen din hos ****</h3></div><br>
+                <div class="kjopButtonBox">
+                    <a href="lagre.html" id="buttonKjop" class="btn btn-primary">Kjøp billetter</a><br>
+                </div>
             </div>
+            <div id="statement"><h2>Serf dept i histoy med oss. Book plassen din hos ****</h2></div><br>
             <div>
-                <a href="lagre.html" class="btn btn-primary">Kjøp billetter</a><br>
                 <div ><h3>Alle billetter</h3></div><br>
-                <div id="feil"></div>
                 <div id="kundene"></div>
-                <button class="btn btn-danger" onclick="nullstille()">Slett alle billettene</button><div style="margin-left: 70px" id="feil"></div>
+                <button id="slettAlleButton" class="btn btn-danger" onclick="nullstille()">Slett alle billettene</button>
+                <div style="margin-left: 70px" id="feil"></div>
             </div>
         </div>
     </div>
