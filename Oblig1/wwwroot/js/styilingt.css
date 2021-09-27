@@ -1,21 +1,27 @@
-﻿body {background-color:lightgray;
-      font-size:large;
-}
-#image{
-    width:70%;
-    height:500px;
-    margin-left: auto;
-    margin-right: auto;
-    align-items:center;
-    display:block;
-}
-#kundene {
-    width: 100%;
-    margin-left: 25%;
-    margin-right: auto;
-    align-content: center;
-    table-layout: fixed;
-    border-collapse: collapse;
-    border: 3px solid purple;
+﻿body {
+  background-color: lightgray;
+  font-size: large;
 }
 
+#image {
+  width: 100%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  display: block;
+}
+#kundene {
+  font-size: 12px;
+  width: auto;
+  margin-right: auto;
+  align-content: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+#homeContainer {
+    margin-left: 3%;   
+    margin-right: 3%;
+}
