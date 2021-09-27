@@ -1,25 +1,37 @@
-﻿function valideringReiseMal() {
+﻿function makeBorderRed(input) {
+    input.style.border = "1px solid red";
+}
+function makeBorderInitial(input) {
+    input.style.border = "1px solid black";
+}
+
+function valideringReiseMal() {
     const fra = $("#reiseMalFra").val();
     const til = $("#reiseMalTil").val();
     if (fra === til) {
         $("#reisemalVelgFeil").html("Velg riktig reisemål");
+        makeBorderRed(document.getElementById("reiseMalFra"));
+        makeBorderRed(document.getElementById("reiseMalTil"));
         return false
     } else {
         $("#reisemalVelgFeil").html("");
+        makeBorderInitial(document.getElementById("reiseMalFra"));
+        makeBorderInitial(document.getElementById("reiseMalTil"));
         return true;
     }
 }
-
 
 function valideringFornavn(fornavn) {
     const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
     const ok = regexp.test(fornavn);
     if (!ok) {
         $("#forNavnFeil").html("Fornavnet må bestå av 2 til 20 bokstaver");
+        makeBorderRed(document.getElementById("fornavn"));
         return false;
     }
     else {
         $("#forNavnFeil").html("");
+        makeBorderInitial(document.getElementById("fornavn"));
         return true;
     }
 }
