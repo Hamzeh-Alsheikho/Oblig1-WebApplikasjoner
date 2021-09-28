@@ -41,10 +41,12 @@ function valideringEtternavn(etternavn) {
     const ok = regexp.test(etternavn);
     if (!ok) {
         $("#etterNavnfeil").html("Etternavnet må bestå av 2 til 20 bokstaver");
+        makeBorderRed(document.getElementById("etternavn"));
         return false;
     }
     else {
         $("#etterNavnfeil").html("");
+        makeBorderInitial(document.getElementById("etternavn"));
         return true;
     }
 }
@@ -55,28 +57,33 @@ function valideringTelfonnr(telfonnr) {
     const ok = regexp.test(telfonnr);
     if (isNaN(telfonnr) ) {
         $("#telfonnrFeil").html("Må skrive nummer");
+        makeBorderRed(document.getElementById("telfonnr"));
         return false;
     }
     if (!ok) {
         $("#telfonnrFeil").html("Må være minst 8 siffer e.g. +4793412342");
+        makeBorderRed(document.getElementById("telfonnr"));
         return false;
     }
     else {
         $("#telfonnrFeil").html("");
+        makeBorderInitial(document.getElementById("telfonnr"));
         return true;
     }
 }
 
 
 function valideringAdresse(adresse) {
-    var regexp = /^[0-9a-zA-ZæøåÆØÅ\ \.\-]{2,50}$/;
+    var regexp = /^[a-zA-ZæøåÆØÅ.\-]+[a-zA-ZæøåÆØÅ0-9\ \_.]*[0-9]*$/;
     var ok = regexp.test(adresse);
     if (!ok) {
         $("#adresseFeil").html("Adressen må bestå av 2 til 50 bokstaver og tall");
+        makeBorderRed(document.getElementById("adresse"));
         return false;
     }
     else {
         $("#adresseFeil").html("");
+        makeBorderInitial(document.getElementById("adresse"));
         return true;
     }
 }
@@ -86,10 +93,12 @@ function valideringPostnr(postnr) {
     var ok = regexp.test(postnr);
     if (!ok) {
         $("#postnrFeil").html("Postnr må bestå av 4 tall");
+        makeBorderRed(document.getElementById("postnr"));
         return false;
     }
     else {
         $("#postnrFeil").html("");
+        makeBorderInitial(document.getElementById("postnr"));
         return true;
     }
 }
@@ -99,10 +108,12 @@ function validerPoststed(poststed) {
     var ok = regexp.test(poststed);
     if (!ok) {
         $("#poststedFeil").html("Poststed må bestå av 2 til 20 bokstaver");
+        makeBorderRed(document.getElementById("poststed"));
         return false;
     }
     else {
         $("#poststedFeil").html("");
+        makeBorderInitial(document.getElementById("poststed"));
         return true;
     }
 }
@@ -112,10 +123,12 @@ function valideringEpost(epost) {
     var ok = regexp.test(epost);
     if (!ok) {
         $("#epostFeil").html("Må skrive f.eks: xxx@oslomet.no");
+        makeBorderRed(document.getElementById("epost"));
         return false;
     }
     else {
         $("#epostFeil").html("");
+        makeBorderInitial(document.getElementById("epost"));
         return true;
     }
 }

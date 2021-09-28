@@ -39,7 +39,7 @@ namespace WebApplication24.Models
         [RegularExpression(@"[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}")]
         public string Epost { get; set; }
 
-        [RegularExpression(@"[0-9a-zA-ZæøåÆØÅ. \-]{2,50}")]
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ0-9_]*[a-zA-Z_]?[a-zA-Z\ \.0-9_]{2,50}")]
         public string Adresse { get; set; }
 
         [RegularExpression(@"[0-9]{4}")]

@@ -64,8 +64,18 @@
     font-family: cursive;
     text-align: center;
 }
-
-#slettAlleButton {
-    border: 1px solid blue;
-    margin-right: 0;
+#lagreBody {
+    background-color: #F7F4F4;
+}
+.container {
+    top:10px;
+    max-width: 1600px;
+    max-height: 1000px;
+   
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+}
+.col-md-12{
+    margin-left: 150px
 }
