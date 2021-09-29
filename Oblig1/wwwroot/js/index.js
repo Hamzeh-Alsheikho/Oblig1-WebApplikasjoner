@@ -54,13 +54,18 @@ function slettBillett(id) {
 
 
 function nullstille() {
-    const url = "Kunde/SlettAlle"
-    $.get(url, function (ok) {
-        if (ok) {
-            window.location.href = 'index.html';
-        }
-        else {
-            $("#feil").html("Feil i db - prøv igjen senere");
-        }
-    });
+    const slettConfirm = confirm("Er du sikker på å slette alle biletter");
+    if (slettConfirm) {
+        const url = "Kunde/SlettAlle"
+        $.get(url, function (ok) {
+            if (ok) {
+                window.location.href = 'index.html';
+            }
+            else {
+                $("#feil").html("Feil i db - prøv igjen senere");
+            }
+        });
+    }
 }
+
+
