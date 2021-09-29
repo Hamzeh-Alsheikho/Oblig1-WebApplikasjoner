@@ -22,7 +22,7 @@ $(function () {
         $("#etternavn").val(kunde.etternavn);
         $("#adresse").val(kunde.adresse);
         $("#postnr").val(kunde.postnr);
-         $("#poststed").val(kunde.poststed);
+        $("#poststed").val(kunde.poststed);
         $("#reiseMalFra").val(kunde.destinationFrom);
         $("#reiseMalTil").val(kunde.destinationTo);
         $("#antallAdult").val(kunde.antallAdult);
@@ -30,7 +30,7 @@ $(function () {
         $("ticketType").val(kunde.ticketType);
         $("#avgang").val(kunde.departureDato);
         $("#retur").val(kunde.returnDato);
-         $("#telfonnr").val(kunde.telfonnr);
+        $("#telfonnr").val(kunde.telfonnr);
         $("#epost").val(kunde.epost);
 
         if (kunde.ticketType === 'En vei') {

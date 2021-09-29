@@ -2,7 +2,7 @@
     input.style.border = "1px solid red";
 }
 function makeBorderInitial(input) {
-    input.style.border = "1px solid black";
+    input.style.border = "1px solid lightgray";
 }
 
 function valideringReiseMal() {

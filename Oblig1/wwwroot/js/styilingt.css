@@ -65,17 +65,124 @@
     text-align: center;
 }
 #lagreBody {
-    background-color: #F7F4F4;
+    background-color: white;
 }
-.container {
-    top:10px;
+
+.formContainer  {
+    width: 100%;
     max-width: 1600px;
-    max-height: 1000px;
-   
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.formContainer h3 {
+    margin-bottom: 2em;
+}
+
+form {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 1em;
+    background: rgb(231,231,231);
+    background: radial-gradient(circle, rgba(231,231,231,1) 0%, rgba(133,218,186,1) 100%);
+    border-radius: 10px;
+}
+
+form .reisemalTitle {
+    width: 100%;
+    padding: 0 10px;
+}
+
+form label {
+    font-weight: 400;
+}
+
+
+.inputContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.inputBox {
+    flex: 1;
+    min-width: 350px;
+    padding: 10px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs input {
+    flex: 1;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.destinationGroup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.destinationGroup .inputBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.destinationGroup .inputBox select{
+    flex: 1;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.checkboxTicketType {
+    width: 60%;
     margin: 0 auto;
 }
-.col-md-12{
-    margin-left: 150px
+
+.feilDiv {
+    color: rgb(249, 70, 70);
+    font-size: 16px;
+    text-align: center;
+}
+
+.buttons {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+}
+
+#reg {
+    font-size: 20px;
+}
+
+#avbryt {
+    font-size: 20px;
+    background-color:  white;
+    color: gray;
+    border: 1px solid gray;
+}
+
+#avbryt:hover {
+    background-color: rgb(227, 227, 227);
 }
