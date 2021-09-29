@@ -1,5 +1,7 @@
 ﻿function valideringOgEndreKunde() {
     const reiseMalOK = valideringReiseMal();
+    const antallVoksenOK = valideringAntallVoksen($("#antallAdult").val());
+    const antallBarnOK = valideringAntallBarn($("#antallChild").val());
     const fornavnOK = valideringFornavn($("#fornavn").val());
     const etternavnOK = valideringEtternavn($("#etternavn").val());
     const adresseOK = valideringAdresse($("#adresse").val());
@@ -7,15 +9,13 @@
     const poststedOK = validerPoststed($("#poststed").val());
     const epostOK = valideringEpost($("#epost").val());
     const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
-    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK) {
+    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK && antallVoksenOK && antallBarnOK) {
         endreKunde();
     }
 }
 
 $(function () {
-    // hent kunden med kunde-id fra url og vis denne i skjemaet. 
-
-    const id = window.location.search.substring(1);
+      const id = window.location.search.substring(1);
     const url = "Kunde/HentEn?" + id;
     $.get(url, function (kunde) {
         $("#fornavn").val(kunde.fornavn);

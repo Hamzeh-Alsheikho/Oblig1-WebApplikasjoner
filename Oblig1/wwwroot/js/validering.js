@@ -35,6 +35,30 @@ function valideringFornavn(fornavn) {
         return true;
     }
 }
+function valideringAntallVoksen(antallAdult) {
+    if (antallAdult <1) {
+        $("#antallAdultFeil").html("Antall voksne må være minst 1");
+        makeBorderRed(document.getElementById("antallAdult"));
+        return false;
+    }
+    else {
+        $("#antallAdultFeil").html("");
+        makeBorderInitial(document.getElementById("antallAdult"));
+        return true;
+    }
+}
+function valideringAntallBarn(antallChild) {
+    if (antallChild < 0) {
+        $("#antallChildFeil").html("Antall barn må være minst 0");
+        makeBorderRed(document.getElementById("antallChild"));
+        return false;
+    }
+    else {
+        $("#antallChildFeil").html("");
+        makeBorderInitial(document.getElementById("antallChild"));
+        return true;
+    }
+}
 
 function valideringEtternavn(etternavn) {
     const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;

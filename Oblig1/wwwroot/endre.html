@@ -42,18 +42,16 @@
           <div class="inputContainer">
             <div class="inputBox">
               <div class="inputs">
-                <!-- Need to change input field size -->
                 <label for="antallAdult">Antall voksen: </label>
-                <input type="number" min="1" value="1" id="antallAdult" />
+                <input type="number" min="1" value="1" id="antallAdult" onchange="valideringAntallVoksen()" />
               </div>
               <div id="antallAdultFeil" class="feilDiv"></div>
             </div>
   
             <div class="inputBox">
               <div class="inputs">
-                <!-- Need to change input field size -->
                 <label for="antallChild">Antall barn: </label>
-                <input type="number" min="0" value="0" id="antallChild" />
+                <input type="number" min="0" value="0" id="antallChild" onchange="valideringAntallBarn()" />
               </div>
               <div id="antallChildFeil" class="feilDiv"></div>
             </div>
@@ -93,8 +91,7 @@
               </div>
             </div>
           </div>
-  
-          
+        
           <div class="inputContainer">
             <div class="inputBox">
               <div class="inputs">

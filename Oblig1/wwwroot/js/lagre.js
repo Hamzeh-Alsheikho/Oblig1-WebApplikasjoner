@@ -1,5 +1,7 @@
 ﻿function valideringOgLagreKunde() {
     const reiseMalOK = valideringReiseMal();
+    const antallVoksenOK = valideringAntallVoksen($("#antallAdult").val());
+    const antallBarnOK = valideringAntallBarn($("#antallChild").val());
     const fornavnOK = valideringFornavn($("#fornavn").val());
     const etternavnOK = valideringEtternavn($("#etternavn").val());
     const adresseOK = valideringAdresse($("#adresse").val());
@@ -7,7 +9,7 @@
     const poststedOK = validerPoststed($("#poststed").val());
     const epostOK = valideringEpost($("#epost").val());
     const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
-    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK) {
+    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK && antallVoksenOK && antallBarnOK) {
         lagreKunde();
     }
 }
