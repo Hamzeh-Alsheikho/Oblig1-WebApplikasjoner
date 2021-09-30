@@ -187,76 +187,41 @@ function valideringkortholdersNavn(kortholdersNavn) {
 }
 
 function valideringUtlopsDato() {
-    const manedInput = document.getElementById("utlopsdatoManed").value;
     const arInput = document.getElementById("utlopsdatoAr").value;
-
-    const arOk = valideringUtlopsdatoAr(arInput);
-    // const manedOk = valideringutlopsdatoManed(manedInput)
-    // if (arOk && manedOk) {
-    //     $("#utlopsdatoFeil").html("");
-    //     return true;
-    // }
-    // return false;
-   
-    if (arOk) {
-        $("#utlopsdatoFeil").html("");
-        const manedOk = valideringutlopsdatoManed(manedInput)
-        if (manedOk) {
+    const manedInput = document.getElementById("utlopsdatoManed").value;
+    let date = new Date();
+    let regexp = /^[0-9]{2}$/;
+    let currentYear = parseInt(date.getFullYear())  % 100;
+    let currentMonth = parseInt(date.getMonth()) + 1;
+    let arRegexOk = regexp.test(arInput);
+    
+    if (arRegexOk) {
+        if (arInput > currentYear) {
             $("#utlopsdatoFeil").html("");
             return true;
-        }
-        return false;
-    } else {
-        return false;
-    }
-}
-
-function valideringutlopsdatoManed(kortnummerUtlopsdatoManed) {
-    let date = new Date();
-    let currentMonth = parseInt(date.getMonth()) + 1;
-    const manedInput = parseInt(kortnummerUtlopsdatoManed)
-
-    if (manedInput < currentMonth) {
-        $("#utlopsdatoFeil").html("Ugyldig måned");
-        makeBorderRed(document.getElementById("utlopsdatoManed"));
-        return false;
-    }
-    else {
-        $("#utlopsdatoFeil").html("");
-        makeBorderInitial(document.getElementById("utlopsdatoManed"));
-        return true;
-    }
-}
-
-function valideringUtlopsdatoAr(utlopsdatoAr) {
-    var regexp = /^[0-9]{2}$/;
-    var ok = regexp.test(utlopsdatoAr);
-    var year = new Date();
-    var currentYear = parseInt(year.getFullYear())  % 100;
-    console.log(currentYear)
-    console.log(utlopsdatoAr)
-
-    if (!ok) {
-        $("#utlopsdatoFeil").html("År må bestå av 2 sifre");
-        makeBorderRed(document.getElementById("utlopsdatoAr")); 
-        return false;
-    }
-    else {
-        if (parseInt(utlopsdatoAr) < currentYear) {
+        } else if (parseInt(arInput) === currentYear) {
+            const manedOk = manedInput >= currentMonth;
+            if (!manedOk) {
+                $("#utlopsdatoFeil").html("Ugyldig måned");
+                return false;
+            }
+            $("#utlopsdatoFeil").html("");
+            return true;
+        } else {
             $("#utlopsdatoFeil").html("Ugyldig år");
-            makeBorderRed(document.getElementById("utlopsdatoAr"));
             return false;
         }
-        $("#utlopsdatoFeil").html("");
-        makeBorderInitial(document.getElementById("utlopsdatoAr"));
-        return true;
+    } else {
+        $("#utlopsdatoFeil").html("År må bestå av 2 sifre");
+         return false;
     }
 }
 
 function valideringCardVerificationCode(cardVerificationCode) {
+    console.log(cardVerificationCode)
     var regexp = /^[0-9]{3}$/;
     var ok = regexp.test(cardVerificationCode);
-    if (!ok && ok < 3 && ok >3) {
+    if (!ok) {
         $("#cardVerificationCodeFeil").html("CVC må bestå av 3 sifre");
         makeBorderRed(document.getElementById("cardVerificationCode"));
         return false;

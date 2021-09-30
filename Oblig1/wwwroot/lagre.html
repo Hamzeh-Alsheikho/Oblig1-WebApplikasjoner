@@ -181,7 +181,7 @@
 
     <!-- ============ -->
 
-    <div class="formContainer" id="kredittForm">
+    <div class="formContainer hidden" id="kredittForm">
       <form>
         <h2>Kreditt Info</h2>
         <div class="inputContainer">
@@ -230,7 +230,7 @@
           <div class="inputBox">
             <div class="inputs">
               <label for="cardVerificationCode">CVV/CVC/CID</label>
-              <input type="number" min="0" value="0" id="cardVerificationCode" onchange="cardVerificationCode(this.value)" />
+              <input type="text" placeholder="123" id="cardVerificationCode" onchange="valideringCardVerificationCode(this.value)" />
             </div>
             <div id="cardVerificationCodeFeil" class="feilDiv"></div>
           </div>
