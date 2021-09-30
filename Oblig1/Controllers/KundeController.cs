@@ -98,5 +98,20 @@ namespace WebApplication24.Controllers
             }
             return Ok("Alle ble slettet");
         }
+
+         public async Task<ActionResult> LagreKreditt(Kreditt kredittInfo)
+        {
+                bool returnOk = await _kundeDB.LagreKreditt(kredittInfo);
+                if (!returnOk)
+                {
+                    _kundeLog.LogInformation("Kunne ikke lagre kredittinfo");
+                    return BadRequest("Kunne ikke lagre kredittinfo");
+                }
+                return Ok("Kredittinfo ble lagret");
+
+            // _kundeLog.LogInformation("Feil i inputValidering");
+            // return BadRequest("Feil i inputvalidering på server");
+        }
+
     }
 }

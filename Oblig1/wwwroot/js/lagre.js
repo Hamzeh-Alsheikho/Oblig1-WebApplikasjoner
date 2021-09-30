@@ -69,12 +69,35 @@ function lagreKunde() {
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (OK) {
         if (OK) {
-            window.location.href = 'index.html';
+            // window.location.href = 'index.html';
+            lagreKredittInfo();
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");
         }
 
+    });
+}
+
+function lagreKredittInfo() {
+    const arInput = document.getElementById("utlopsdatoAr").value;
+    const manedInput = document.getElementById("utlopsdatoManed").value;
+    const utlopsDato = manedInput + "/" + arInput;
+    console.log(utlopsDato)
+    let kredittInfo = {
+        kortnummer: $("#kortnummer").val(),
+        kortHolderNavn: $("#kortholdersNavn").val(),
+        kortUtlopsdato: utlopsDato,
+        cvc: $("#cardVerificationCode").val(), 
+    }
+    const url = "Kunde/LagreKreditt";
+    $.post(url, kredittInfo, function (OK) {
+        if (OK) {
+            window.location.href = 'index.html';
+        }
+        else {
+            $("#feil").html("Feil i db - prøv igjen senere");
+        }
     });
 }
 

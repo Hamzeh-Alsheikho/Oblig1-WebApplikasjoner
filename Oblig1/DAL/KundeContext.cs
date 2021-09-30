@@ -22,15 +22,6 @@ namespace Oblig1.Models
         virtual public Kreditt Kreditt { get; set; }
     }
 
-    public class Kreditt
-    {
-        public int Id { get; set; }
-        public string Kortnummer { get; set; }
-        public string KortHolderNavn { get; set; }
-        public string KortUtlopsdato { get; set; }
-        public string Cvc { get; set; }
-    }
-
     public class PostSteder
     {
         [Key]

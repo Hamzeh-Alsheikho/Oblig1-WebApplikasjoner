@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Oblig1.Models;
 using WebApplication24.Models;
 
 namespace Oblig1.DAL
@@ -14,6 +15,6 @@ namespace Oblig1.DAL
         Task<Kunde> HentEn(int id);
         Task<bool> Slett(int id);
         Task<bool> SlettAlle();
-
+        Task<bool> LagreKreditt(Kreditt kredittInfo);
     }
 }

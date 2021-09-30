@@ -65,6 +65,26 @@ namespace Oblig1.DAL
             }
         }
 
+        public async Task<bool> LagreKreditt(Kreditt kredittInfo) {
+            try
+            {
+              var nyKreditt = new Kreditt();
+              nyKreditt.Kortnummer = kredittInfo.Kortnummer;
+              nyKreditt.KortHolderNavn = kredittInfo.KortHolderNavn;
+              nyKreditt.KortUtlopsdato = kredittInfo.KortUtlopsdato;
+              nyKreditt.Cvc = kredittInfo.Cvc; 
+
+              _kundeDB.Kreditt.Add(nyKreditt);
+              await _kundeDB.SaveChangesAsync();
+              return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+                return false;
+            }
+        }
+
         public async Task<List<Kunde>> HentAlle()
         {
             try
