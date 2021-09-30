@@ -1,4 +1,7 @@
-﻿function valideringOgLagreKunde() {
+﻿let kunde = {}
+
+
+function valideringOgLagreKunde() {
     const reiseMalOK = valideringReiseMal();
     const antallVoksenOK = valideringAntallVoksen($("#antallAdult").val());
     const antallBarnOK = valideringAntallBarn($("#antallChild").val());
@@ -10,20 +13,21 @@
     const epostOK = valideringEpost($("#epost").val());
     const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
     if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK && antallVoksenOK && antallBarnOK) {
-        lagreKunde();
+        showKredittForm()
     }
 }
 
-function lagreKunde() {
-    let returDate;
+//TODO
+// function valideringOgLagreKredittInfo() { }
+
+function showKredittForm() {
     const ticketType = getTicketType();
     if (ticketType === 'En vei') {
         returDate = $("#retur").val(" ");
     } else {
         returDate = $("#retur").val();
     }
-
-    const kunde = {
+    kunde = {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
@@ -40,7 +44,23 @@ function lagreKunde() {
         telfonnr: $("#telfonnr").val(),
         epost: $("#epost").val(),
      }
+    const kjopBillettForm = document.getElementById("kjopBillettForm");
+    const kredittForm = document.getElementById("kredittForm");
+    kjopBillettForm.classList.add("hidden")
+    kredittForm.classList.remove("hidden")
+}
 
+function hideKredittForm() {
+    const kjopBillettForm = document.getElementById("kjopBillettForm");
+    const kredittForm = document.getElementById("kredittForm");
+    kjopBillettForm.classList.remove("hidden")
+    kredittForm.classList.add("hidden")
+}
+
+function lagreKunde() {
+    console.log(kunde, "sdfsdf")
+
+    
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (OK) {
         if (OK) {

@@ -11,7 +11,7 @@
     <title></title>
   </head>
   <body id="lagreBody">
-    <div class="formContainer">
+    <div class="formContainer" id="kjopBillettForm">
       <form>
         <h2>Kjøp Billetter</h2>
         <div class="reisemalTitle">
@@ -178,5 +178,59 @@
         <div id="feil"></div>
       </form>
     </div>
+
+    <!-- ============ -->
+
+    <div class="formContainer hidden" id="kredittForm">
+      <form>
+        <h2>Kreditt Info</h2>
+        <div class="inputContainer">
+          <div class="inputBox">
+            <div class="inputs">
+              <label for="kortnummer">Kortnummer</label>
+              <input type="text" id="kortnummer"/>
+            </div>
+            <div id="kortnummerFeil" class="feilDiv"></div>
+          </div>
+
+          <div class="inputBox">
+            <div class="inputs">
+              <label for="kortholdersNavn">Kortholders navn </label>
+              <input type="text" id="kortholdersNavn"/>
+            </div>
+            <div id="kortholdersNavnFeil" class="feilDiv"></div>
+          </div>
+        </div>
+
+        <div class="inputContainer">
+          <div class="inputBox">
+            <div class="inputs">
+              <label>Kortets utløpsdato</label>
+              <div class="utlopsDatoInputs">
+                <input type="number" id="utlopsdatoManed" placeholder="måned"/>
+                <input type="number" id="utlopsdatoAr" placeholder="år"/>
+              </div>
+            </div>
+            <div id="utlopsdatoFeil" class="feilDiv"></div>
+          </div>
+
+          <div class="inputBox">
+            <div class="inputs">
+              <label for="antallChild">CVV/CVC/CID</label>
+              <input type="number" min="0" value="0" id="antallChild" onchange="valideringAntallBarn()" />
+            </div>
+            <div id="antallChildFeil" class="feilDiv"></div>
+          </div>
+        </div>
+        <div class="buttons">
+          <input type="button" id="reg" value="Betal" class="btn btn-primary" onclick="lagreKunde()"/>
+          <button id="avbryt" class="btn btn-primary" onclick="hideKredittFrom()">Avbryt</button>
+        </div>
+        <div id="feil"></div>
+     
+      </form>
+    </div>
+
+    
   </body>
 </html>

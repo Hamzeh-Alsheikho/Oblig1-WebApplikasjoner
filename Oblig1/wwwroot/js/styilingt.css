@@ -188,3 +188,21 @@ form label {
 #avbryt:hover {
     background-color: rgb(227, 227, 227);
 }
+
+
+.utlopsDatoInputs {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#utlopsdatoManed,
+#utlopsdatoAr {
+    width: 100%;
+    max-width: 200px;
+}
+
+.hidden {
+    display: none;
+}

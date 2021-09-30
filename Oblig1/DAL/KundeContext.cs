@@ -19,7 +19,18 @@ namespace Oblig1.Models
         public string Adresse { get; set; }
         virtual public Ticket Ticket { get; set; }
         virtual public PostSteder PostSteder { get; set; }
+        virtual public Kreditt Kreditt { get; set; }
     }
+
+    public class Kreditt
+    {
+        public int Id { get; set; }
+        public string Kortnummer { get; set; }
+        public string KortHolderNavn { get; set; }
+        public string KortUtlopsdato { get; set; }
+        public string Cvc { get; set; }
+    }
+
     public class PostSteder
     {
         [Key]
@@ -53,6 +64,7 @@ namespace Oblig1.Models
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<PostSteder> PostSteder { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Kreditt> Kreditt { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
