@@ -97,13 +97,13 @@
           <div class="inputBox">
             <div class="inputs">
               <label for="avgang">Avgangsdato:</label>
-              <input type="date" id="avgang" onchange="onAvgangChange()" />
+              <input type="date" id="avgang" onchange="onAvgangChange()" onkeydown="return false" />
             </div>
           </div>
           <div class="inputBox">
             <div class="inputs">
               <label for="retur" id="returLabel">Returdato : </label>
-              <input type="date" id="retur" />
+              <input type="date" id="retur" onkeydown="return false" />
             </div>
           </div>
         </div>
@@ -181,14 +181,14 @@
 
     <!-- ============ -->
 
-    <div class="formContainer hidden" id="kredittForm">
+    <div class="formContainer" id="kredittForm">
       <form>
         <h2>Kreditt Info</h2>
         <div class="inputContainer">
           <div class="inputBox">
             <div class="inputs">
               <label for="kortnummer">Kortnummer</label>
-              <input type="text" id="kortnummer"/>
+              <input type="number" id="kortnummer" onchange="valideringKortnummer(this.value)"/>
             </div>
             <div id="kortnummerFeil" class="feilDiv"></div>
           </div>
@@ -196,7 +196,7 @@
           <div class="inputBox">
             <div class="inputs">
               <label for="kortholdersNavn">Kortholders navn </label>
-              <input type="text" id="kortholdersNavn"/>
+              <input type="text" id="kortholdersNavn" onchange="valideringkortholdersNavn(this.value)"/>
             </div>
             <div id="kortholdersNavnFeil" class="feilDiv"></div>
           </div>
@@ -207,8 +207,21 @@
             <div class="inputs">
               <label>Kortets utløpsdato</label>
               <div class="utlopsDatoInputs">
-                <input type="number" id="utlopsdatoManed" placeholder="måned"/>
-                <input type="number" id="utlopsdatoAr" placeholder="år"/>
+                <select id="utlopsdatoManed" placeholder="måned" onchange="valideringUtlopsDato()">
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select>
+                <input type="number" id="utlopsdatoAr" placeholder="år" onchange="valideringUtlopsDato()"/>
               </div>
             </div>
             <div id="utlopsdatoFeil" class="feilDiv"></div>
@@ -217,13 +230,13 @@
           <div class="inputBox">
             <div class="inputs">
               <label for="cardVerificationCode">CVV/CVC/CID</label>
-              <input type="number" min="0" value="0" id="cardVerificationCode" onchange="cardVerificationCode()" />
+              <input type="number" min="0" value="0" id="cardVerificationCode" onchange="cardVerificationCode(this.value)" />
             </div>
             <div id="cardVerificationCodeFeil" class="feilDiv"></div>
           </div>
         </div>
         <div class="buttons">
-          <input type="button" id="reg" value="Betal" class="btn btn-primary" onclick="lagreKunde()"/>
+          <input type="button" id="reg" value="Betal" class="btn btn-primary" onclick="valideringOgLagreKredittInfo()"/>
           <button id="avbryt" class="btn btn-primary" onclick="hideKredittFrom()">Avbryt</button>
         </div>
         <div id="feil"></div>

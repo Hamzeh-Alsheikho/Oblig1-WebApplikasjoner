@@ -12,20 +12,21 @@ function valideringOgLagreKunde() {
     const poststedOK = validerPoststed($("#poststed").val());
     const epostOK = valideringEpost($("#epost").val());
     const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
-    const kortnummerOK = valideringKortnummer($("#kortnummer").val());
-    const kortholdersNavnrOK = valideringkortholdersNavn($("#kortholdersNavn").val());
-    const kortnuutlopsdatoManedmmerOK = valideringutlopsdatoManed($("#kortnuutlopsdatoManedmmer").val());
-    const utlopsdatoArOK = valideringUtlopsdatoAr($("#utlopsdatoAr").val());
-    const cardVerificationCodeOK = valideringCardVerificationCode($("#cardVerificationCode").val());
     if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK
-        && antallVoksenOK && antallBarnOK && kortnummerOK && kortholdersNavnrOK && kortnuutlopsdatoManedmmerOK
-        && utlopsdatoArOK && cardVerificationCodeOK) {
+        && antallVoksenOK && antallBarnOK) {
         showKredittForm()
     }
 }
 
-//TODO
-// function valideringOgLagreKredittInfo() { }
+function valideringOgLagreKredittInfo() {
+    const kortnummerOK = valideringKortnummer($("#kortnummer").val());
+    const kortholdersNavnrOK = valideringkortholdersNavn($("#kortholdersNavn").val());
+    const utlopsdatoOK = valideringUtlopsDato();
+    const cardVerificationCodeOK = valideringCardVerificationCode($("#cardVerificationCode").val());
+    if (kortnummerOK && kortholdersNavnrOK && utlopsdatoOK && cardVerificationCodeOK) {
+        lagreKunde()
+    }
+ }
 
 function showKredittForm() {
     const ticketType = getTicketType();
@@ -65,9 +66,6 @@ function hideKredittForm() {
 }
 
 function lagreKunde() {
-    console.log(kunde, "sdfsdf")
-
-    
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (OK) {
         if (OK) {

@@ -172,7 +172,7 @@ function valideringKortnummer(kortnummer) {
 }
 
 function valideringkortholdersNavn(kortholdersNavn) {
-    var regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
+    var regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,40}$/;
     var ok = regexp.test(kortholdersNavn);
     if (!ok) {
         $("#kortholdersNavnFeil").html("Skriv rikktig navn");
@@ -186,11 +186,38 @@ function valideringkortholdersNavn(kortholdersNavn) {
     }
 }
 
-function valideringutlopsdatoManed(kortnuutlopsdatoManedmmer) {
-    var regexp = /^[0-9]{2}$/;
-    var ok = regexp.test(utlopsdatoManed);
-    if (!ok && ok>12) {
-        $("#utlopsdatoFeil").html("Kortnummeret må bestå av 2 sifre");
+function valideringUtlopsDato() {
+    const manedInput = document.getElementById("utlopsdatoManed").value;
+    const arInput = document.getElementById("utlopsdatoAr").value;
+
+    const arOk = valideringUtlopsdatoAr(arInput);
+    // const manedOk = valideringutlopsdatoManed(manedInput)
+    // if (arOk && manedOk) {
+    //     $("#utlopsdatoFeil").html("");
+    //     return true;
+    // }
+    // return false;
+   
+    if (arOk) {
+        $("#utlopsdatoFeil").html("");
+        const manedOk = valideringutlopsdatoManed(manedInput)
+        if (manedOk) {
+            $("#utlopsdatoFeil").html("");
+            return true;
+        }
+        return false;
+    } else {
+        return false;
+    }
+}
+
+function valideringutlopsdatoManed(kortnummerUtlopsdatoManed) {
+    let date = new Date();
+    let currentMonth = parseInt(date.getMonth()) + 1;
+    const manedInput = parseInt(kortnummerUtlopsdatoManed)
+
+    if (manedInput < currentMonth) {
+        $("#utlopsdatoFeil").html("Ugyldig måned");
         makeBorderRed(document.getElementById("utlopsdatoManed"));
         return false;
     }
@@ -200,22 +227,32 @@ function valideringutlopsdatoManed(kortnuutlopsdatoManedmmer) {
         return true;
     }
 }
+
 function valideringUtlopsdatoAr(utlopsdatoAr) {
     var regexp = /^[0-9]{2}$/;
-    var ok = regexp.test(utlopsdatoManed);
-    var year = new Date(new Date().toDateString());
-    var currentYear = year.getFullYear;
-    if (!ok && ok < currentYear ) {
-        $("#utlopsdatoFeil").html("Utløpsdato må bestå av 2 sifre");
-        makeBorderRed(document.getElementById("utlopsdatoAr"));
+    var ok = regexp.test(utlopsdatoAr);
+    var year = new Date();
+    var currentYear = parseInt(year.getFullYear())  % 100;
+    console.log(currentYear)
+    console.log(utlopsdatoAr)
+
+    if (!ok) {
+        $("#utlopsdatoFeil").html("År må bestå av 2 sifre");
+        makeBorderRed(document.getElementById("utlopsdatoAr")); 
         return false;
     }
     else {
+        if (parseInt(utlopsdatoAr) < currentYear) {
+            $("#utlopsdatoFeil").html("Ugyldig år");
+            makeBorderRed(document.getElementById("utlopsdatoAr"));
+            return false;
+        }
         $("#utlopsdatoFeil").html("");
         makeBorderInitial(document.getElementById("utlopsdatoAr"));
         return true;
     }
 }
+
 function valideringCardVerificationCode(cardVerificationCode) {
     var regexp = /^[0-9]{3}$/;
     var ok = regexp.test(cardVerificationCode);
