@@ -21,20 +21,6 @@ function valideringReiseMal() {
     }
 }
 
-function valideringFornavn(fornavn) {
-    const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
-    const ok = regexp.test(fornavn);
-    if (!ok) {
-        $("#forNavnFeil").html("Fornavnet må bestå av 2 til 20 bokstaver");
-        makeBorderRed(document.getElementById("fornavn"));
-        return false;
-    }
-    else {
-        $("#forNavnFeil").html("");
-        makeBorderInitial(document.getElementById("fornavn"));
-        return true;
-    }
-}
 function valideringAntallVoksen(antallAdult) {
     if (antallAdult <1) {
         $("#antallAdultFeil").html("Antall voksne må være minst 1");
@@ -59,7 +45,20 @@ function valideringAntallBarn(antallChild) {
         return true;
     }
 }
-
+function valideringFornavn(fornavn) {
+    const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
+    const ok = regexp.test(fornavn);
+    if (!ok) {
+        $("#forNavnFeil").html("Fornavnet må bestå av 2 til 20 bokstaver");
+        makeBorderRed(document.getElementById("fornavn"));
+        return false;
+    }
+    else {
+        $("#forNavnFeil").html("");
+        makeBorderInitial(document.getElementById("fornavn"));
+        return true;
+    }
+}
 function valideringEtternavn(etternavn) {
     const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
     const ok = regexp.test(etternavn);
@@ -157,8 +156,77 @@ function valideringEpost(epost) {
     }
 }
 
+function valideringKortnummer(kortnummer) {
+    var regexp = /^[0-9]{16}$/;
+    var ok = regexp.test(kortnummer);
+    if (!ok) {
+        $("#kortnummerFeil").html("Kortnummeret må bestå av 16 sifre");
+        makeBorderRed(document.getElementById("kortnummer"));
+        return false;
+    }
+    else {
+        $("#kortnummerFeil").html("");
+        makeBorderInitial(document.getElementById("kortnummer"));
+        return true;
+    }
+}
 
+function valideringkortholdersNavn(kortholdersNavn) {
+    var regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
+    var ok = regexp.test(kortholdersNavn);
+    if (!ok) {
+        $("#kortholdersNavnFeil").html("Skriv rikktig navn");
+        makeBorderRed(document.getElementById("kortholdersNavn"));
+        return false;
+    }
+    else {
+        $("#kortholdersNavnFeil").html("");
+        makeBorderInitial(document.getElementById("kortholdersNavn"));
+        return true;
+    }
+}
 
-
-
-
+function valideringutlopsdatoManed(kortnuutlopsdatoManedmmer) {
+    var regexp = /^[0-9]{2}$/;
+    var ok = regexp.test(utlopsdatoManed);
+    if (!ok && ok>12) {
+        $("#utlopsdatoFeil").html("Kortnummeret må bestå av 2 sifre");
+        makeBorderRed(document.getElementById("utlopsdatoManed"));
+        return false;
+    }
+    else {
+        $("#utlopsdatoFeil").html("");
+        makeBorderInitial(document.getElementById("utlopsdatoManed"));
+        return true;
+    }
+}
+function valideringUtlopsdatoAr(utlopsdatoAr) {
+    var regexp = /^[0-9]{2}$/;
+    var ok = regexp.test(utlopsdatoManed);
+    var year = new Date(new Date().toDateString());
+    var currentYear = year.getFullYear;
+    if (!ok && ok < currentYear ) {
+        $("#utlopsdatoFeil").html("Utløpsdato må bestå av 2 sifre");
+        makeBorderRed(document.getElementById("utlopsdatoAr"));
+        return false;
+    }
+    else {
+        $("#utlopsdatoFeil").html("");
+        makeBorderInitial(document.getElementById("utlopsdatoAr"));
+        return true;
+    }
+}
+function valideringCardVerificationCode(cardVerificationCode) {
+    var regexp = /^[0-9]{3}$/;
+    var ok = regexp.test(cardVerificationCode);
+    if (!ok && ok < 3 && ok >3) {
+        $("#cardVerificationCodeFeil").html("CVC må bestå av 3 sifre");
+        makeBorderRed(document.getElementById("cardVerificationCode"));
+        return false;
+    }
+    else {
+        $("#cardVerificationCodeFeil").html("");
+        makeBorderInitial(document.getElementById("cardVerificationCode"));
+        return true;
+    }
+}

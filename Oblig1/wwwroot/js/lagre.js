@@ -12,7 +12,14 @@ function valideringOgLagreKunde() {
     const poststedOK = validerPoststed($("#poststed").val());
     const epostOK = valideringEpost($("#epost").val());
     const telfonnrOK = valideringTelfonnr($("#telfonnr").val());
-    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK && antallVoksenOK && antallBarnOK) {
+    const kortnummerOK = valideringKortnummer($("#kortnummer").val());
+    const kortholdersNavnrOK = valideringkortholdersNavn($("#kortholdersNavn").val());
+    const kortnuutlopsdatoManedmmerOK = valideringutlopsdatoManed($("#kortnuutlopsdatoManedmmer").val());
+    const utlopsdatoArOK = valideringUtlopsdatoAr($("#utlopsdatoAr").val());
+    const cardVerificationCodeOK = valideringCardVerificationCode($("#cardVerificationCode").val());
+    if (fornavnOK && etternavnOK && adresseOK && postnrOK && poststedOK && epostOK && telfonnrOK && reiseMalOK
+        && antallVoksenOK && antallBarnOK && kortnummerOK && kortholdersNavnrOK && kortnuutlopsdatoManedmmerOK
+        && utlopsdatoArOK && cardVerificationCodeOK) {
         showKredittForm()
     }
 }
