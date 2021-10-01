@@ -12,7 +12,7 @@ using WebApplication24.Models;
 namespace WebApplication24.Controllers
 {
     [Route("[Controller]/[action]")]
-    public class KundeController : ControllerBase
+    public class KundeController : ControllerBase 
     {
         private readonly IKundeRepository _kundeDB;
 
@@ -23,17 +23,17 @@ namespace WebApplication24.Controllers
             _kundeDB = kundeDB;
             _kundeLog = kundeLog;
         }
-        public async Task<ActionResult> Lagre(Kunde innKunde)
+        public async Task<ActionResult<int>> Lagre(Kunde innKunde) //Kunde/Lagre
         {
             if (ModelState.IsValid)
             {
-                bool returnOk = await _kundeDB.Lagre(innKunde);
-                if (!returnOk)
+                int kundeId = await _kundeDB.Lagre(innKunde);
+                if (kundeId == 0)
                 {
                     _kundeLog.LogInformation("Kunne ikke lagre kunden");
                     return BadRequest("Kunne ikke lagre kunden");
                 }
-                return Ok("Kunde ble lagret");
+                return kundeId;
             }
 
             _kundeLog.LogInformation("Feil i inputValidering");

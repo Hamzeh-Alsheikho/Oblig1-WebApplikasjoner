@@ -9,7 +9,7 @@ namespace Oblig1.DAL
 {
     public interface IKundeRepository
     {
-        Task<bool> Lagre(Kunde innKunde);
+        Task<int> Lagre(Kunde innKunde);
         Task<List<Kunde>> HentAlle();
         Task<bool> Endre(Kunde endreKunde);
         Task<Kunde> HentEn(int id);

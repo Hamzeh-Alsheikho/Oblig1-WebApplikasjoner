@@ -19,7 +19,7 @@ namespace Oblig1.DAL
 
         }
 
-        public async Task<bool> Lagre(Kunde innKunde)
+        public async Task<int> Lagre(Kunde innKunde)
         {
             try
             {
@@ -56,12 +56,13 @@ namespace Oblig1.DAL
 
                 _kundeDB.Kunder.Add(nyKundeRad);
                 await _kundeDB.SaveChangesAsync();
-                return true;
+                var kundeId = nyKundeRad.Id;
+                return kundeId;
             }
             catch (Exception e)
             {
                 Console.Write(e.Message);
-                return false;
+                return 0;
             }
         }
 
@@ -70,6 +71,7 @@ namespace Oblig1.DAL
             {
               var nyKreditt = new Kreditt();
               nyKreditt.Kortnummer = kredittInfo.Kortnummer;
+              nyKreditt.KundeId = kredittInfo.KundeId;  
               nyKreditt.KortHolderNavn = kredittInfo.KortHolderNavn;
               nyKreditt.KortUtlopsdato = kredittInfo.KortUtlopsdato;
               nyKreditt.Cvc = kredittInfo.Cvc; 

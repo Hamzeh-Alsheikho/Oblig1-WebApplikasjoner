@@ -67,25 +67,24 @@ function hideKredittForm() {
 
 function lagreKunde() {
     const url = "Kunde/Lagre";
-    $.post(url, kunde, function (OK) {
-        if (OK) {
-            // window.location.href = 'index.html';
-            lagreKredittInfo();
+    $.post(url, kunde, function (kundeId) {
+        if (kundeId) {
+            lagreKredittInfo(kundeId);
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");
         }
-
     });
 }
 
-function lagreKredittInfo() {
+function lagreKredittInfo(kundeId) {
     const arInput = document.getElementById("utlopsdatoAr").value;
     const manedInput = document.getElementById("utlopsdatoManed").value;
     const utlopsDato = manedInput + "/" + arInput;
-    console.log(utlopsDato)
+
     let kredittInfo = {
         kortnummer: $("#kortnummer").val(),
+        kundeId: kundeId,
         kortHolderNavn: $("#kortholdersNavn").val(),
         kortUtlopsdato: utlopsDato,
         cvc: $("#cardVerificationCode").val(), 
