@@ -42,18 +42,6 @@ namespace Oblig1.DAL
                 {
                     nyKundeRad.PostSteder = sjekkPoststed;
                 }
-
-                /*var nyBillett = new Billett();
-                nyBillett.DestinationFrom = innKunde.DestinationFrom;
-                nyBillett.DestinationTo = innKunde.DestinationTo;
-                nyBillett.TicketType = innKunde.TicketType;
-                nyBillett.TicketClass = innKunde.TicketClass;
-                nyBillett.AntallAdult = innKunde.AntallAdult;
-                nyBillett.AntallChild = innKunde.AntallChild;
-                nyBillett.DepartureDato = innKunde.DepartureDato;
-                nyBillett.ReturnDato = innKunde.ReturnDato;
-                nyKundeRad.Ticket = nyBillett;*/
-
                 _kundeDB.Kunder.Add(nyKundeRad);
                 await _kundeDB.SaveChangesAsync();
                 var kundeId = nyKundeRad.Id;
@@ -143,6 +131,34 @@ namespace Oblig1.DAL
                 }).ToListAsync();
 
                 return alleKundene;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<Billett>> HentAlleBilletter()
+        {
+            try
+            {
+                List<Billett> alleBilletter = await _kundeDB.Billetter.Select(innBillett => new Billett
+                {
+                    Id = innBillett.Id,
+                    KundeId = innBillett.KundeId,
+                    DestinationFrom = innBillett.DestinationFrom,
+                    DestinationTo = innBillett.DestinationTo,
+                    TicketType = innBillett.TicketType,
+                    TicketClass = innBillett.TicketClass,
+                    AntallAdult = innBillett.AntallAdult,
+                    AntallChild = innBillett.AntallChild,
+                    DepartureDato = innBillett.DepartureDato,
+                    ReturnDato = innBillett.ReturnDato,
+    
+
+                }).ToListAsync();
+
+                return alleBilletter;
             }
             catch
             {

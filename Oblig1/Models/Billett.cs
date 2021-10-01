@@ -13,9 +13,9 @@ namespace Oblig1.Models
 
         public string DestinationTo { get; set; }
 
-        public string TicketType { get; set; } //Single or Return
+        public string TicketType { get; set; } 
 
-        public string TicketClass { get; set; } //Economic, Business, First
+        public string TicketClass { get; set; } 
 
         public string DepartureDato { get; set; }
 

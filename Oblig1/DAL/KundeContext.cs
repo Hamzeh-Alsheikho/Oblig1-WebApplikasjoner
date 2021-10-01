@@ -30,20 +30,6 @@ namespace Oblig1.Models
         public string Poststed { get; set; }
     }
 
-    /*public class Ticket
-    {
-        public int Id { get; set; }
-        public string DestinationFrom { get; set; }
-        public string DestinationTo { get; set; }
-        public string TicketType { get; set; } //Single or Return
-        public string TicketClass { get; set; } //Economic, Business, First
-        public string DepartureDato { get; set; }
-        public string ReturnDato { get; set; }
-        public int AntallAdult { get; set; }
-        public int AntallChild { get; set; }
-    }*/
-
-
     public class KundeContext : DbContext
     {
        

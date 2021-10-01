@@ -44,6 +44,11 @@ namespace WebApplication24.Controllers
         {
             List<Kunde> alleKunder = await _kundeDB.HentAlle();
             return Ok(alleKunder);
+        } 
+        public async Task<ActionResult<Billett>> HentAlleBilletter()
+        {
+            List<Billett> alleBilletter = await _kundeDB.HentAlleBilletter();
+            return Ok(alleBilletter);
         }
 
         public async Task<ActionResult> Endre(Kunde endreKunde)
