@@ -93,6 +93,7 @@ namespace Oblig1.DAL
             {
                 var nyBillett = new Billett();
                 nyBillett.DestinationFrom = innBillett.DestinationFrom;
+                nyBillett.KundeId = innBillett.KundeId;
                 nyBillett.DestinationTo = innBillett.DestinationTo;
                 nyBillett.TicketType = innBillett.TicketType;
                 nyBillett.TicketClass = innBillett.TicketClass;
