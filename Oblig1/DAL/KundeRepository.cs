@@ -112,14 +112,6 @@ namespace Oblig1.DAL
                 List<Kunde> alleKundene = await _kundeDB.Kunder.Select(innKunde => new Kunde
                 {
                     Id = innKunde.Id,
-                    /*DestinationFrom = innKunde.Ticket.DestinationFrom,
-                    DestinationTo = innKunde.Ticket.DestinationTo,
-                    TicketType = innKunde.Ticket.TicketType,
-                    TicketClass = innKunde.Ticket.TicketClass,
-                    AntallAdult = innKunde.Ticket.AntallAdult,
-                    AntallChild = innKunde.Ticket.AntallChild,
-                    DepartureDato = innKunde.Ticket.DepartureDato,
-                    ReturnDato = innKunde.Ticket.ReturnDato,*/
                     Fornavn = innKunde.Fornavn,
                     Etternavn = innKunde.Etternavn,
                     Telfonnr = innKunde.Telfonnr,
@@ -165,6 +157,24 @@ namespace Oblig1.DAL
                 return null;
             }
         }
+        public async Task<List<Destinasjon>> HentAlleDestinasjon()
+        {
+            try
+            {
+                List<Destinasjon> alleDestinasjon = await _kundeDB.Destinasjoner.Select(innDestinasjon => new Destinasjon
+                {
+                    Id = innDestinasjon.Id,
+                    Sted = innDestinasjon.Sted,
+
+                }).ToListAsync();
+
+                return alleDestinasjon;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         public async Task<bool> Endre(Kunde endreKunde)
         {
@@ -186,15 +196,6 @@ namespace Oblig1.DAL
                         enKunde.PostSteder.Postnr = endreKunde.Postnr;
                     }
                 }
-
-                /*enKunde.Ticket.DestinationFrom = endreKunde.DestinationFrom;
-                enKunde.Ticket.DestinationTo = endreKunde.DestinationTo;
-                enKunde.Ticket.TicketType = endreKunde.TicketType;
-                enKunde.Ticket.TicketClass = endreKunde.TicketClass;
-                enKunde.Ticket.AntallAdult = endreKunde.AntallAdult;
-                enKunde.Ticket.AntallChild = endreKunde.AntallChild;
-                enKunde.Ticket.DepartureDato = endreKunde.DepartureDato;
-                enKunde.Ticket.ReturnDato = endreKunde.ReturnDato;*/
                 enKunde.Fornavn = endreKunde.Fornavn;
                 enKunde.Etternavn = endreKunde.Etternavn;
                 enKunde.Telfonnr = endreKunde.Telfonnr;
@@ -218,14 +219,6 @@ namespace Oblig1.DAL
                 var enKunde = new Kunde()
                 {
                     Id = hentedKunde.Id,
-                    /*DestinationFrom = hentedKunde.Ticket.DestinationFrom,
-                    DestinationTo = hentedKunde.Ticket.DestinationTo,
-                    TicketType = hentedKunde.Ticket.TicketType,
-                    TicketClass = hentedKunde.Ticket.TicketClass,
-                    AntallAdult = hentedKunde.Ticket.AntallAdult,
-                    AntallChild = hentedKunde.Ticket.AntallChild,
-                    DepartureDato = hentedKunde.Ticket.DepartureDato,
-                    ReturnDato = hentedKunde.Ticket.ReturnDato,*/
                     Fornavn = hentedKunde.Fornavn,
                     Etternavn = hentedKunde.Etternavn,
                     Telfonnr = hentedKunde.Telfonnr,

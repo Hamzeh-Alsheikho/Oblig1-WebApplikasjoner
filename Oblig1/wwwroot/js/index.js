@@ -5,17 +5,15 @@
 
 function hentAlleKunder() {
     
-    $.get("kunde/hentAlle", function (kunder) {
+    $.get("kunde/hentAlle", function (kunderArray) {
         let kunderList;
         let billetterList;
-        if (kunder) {
-            kunderList = kunder;
-            $.get("kunde/hentAlleBilletter", function (billetter) {
-                if (billetter) {
-                    billetterList = billetter;
+        if (kunderArray) {
+            kunderList = kunderArray;
+            $.get("kunde/hentAlleBilletter", function (billetterArray) {
+                if (billetterArray) {
+                    billetterList = billetterArray;
                 }
-                console.log(kunderList);
-                console.log(billetterList);
                 formaterKunder(kunderList, billetterList);
             });
         }

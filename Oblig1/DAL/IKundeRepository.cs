@@ -18,5 +18,6 @@ namespace Oblig1.DAL
         Task<bool> LagreKreditt(Kreditt kredittInfo);
         Task<bool> LagreBillett(Billett billett);
         Task<List<Billett>> HentAlleBilletter();
+        Task<List<Destinasjon>> HentAlleDestinasjon();
     }
 }

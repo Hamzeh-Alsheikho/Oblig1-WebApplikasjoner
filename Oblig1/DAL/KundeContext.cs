@@ -42,6 +42,7 @@ namespace Oblig1.Models
         public DbSet<PostSteder> PostSteder { get; set; }
         public DbSet<Billett> Billetter { get; set; }
         public DbSet<Kreditt> Kreditt { get; set; }
+        public DbSet<Destinasjon> Destinasjoner { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

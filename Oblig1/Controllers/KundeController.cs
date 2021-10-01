@@ -50,6 +50,11 @@ namespace WebApplication24.Controllers
             List<Billett> alleBilletter = await _kundeDB.HentAlleBilletter();
             return Ok(alleBilletter);
         }
+        public async Task<ActionResult<Destinasjon>> HentAlleDestinasjon()
+        {
+            List<Destinasjon> alleDestinasjon = await _kundeDB.HentAlleDestinasjon();
+            return Ok(alleDestinasjon);
+        }
 
         public async Task<ActionResult> Endre(Kunde endreKunde)
         {
@@ -113,9 +118,6 @@ namespace WebApplication24.Controllers
                     return BadRequest("Kunne ikke lagre kredittinfo");
                 }
                 return Ok("Kredittinfo ble lagret");
-
-            // _kundeLog.LogInformation("Feil i inputValidering");
-            // return BadRequest("Feil i inputvalidering på server");
         }
 
         public async Task<ActionResult> LagreBillett(Billett billett)
@@ -128,8 +130,6 @@ namespace WebApplication24.Controllers
             }
             return Ok("Billett ble lagret");
 
-            // _kundeLog.LogInformation("Feil i inputValidering");
-            // return BadRequest("Feil i inputvalidering på server");
         }
 
     }
