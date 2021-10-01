@@ -73,9 +73,7 @@ function lagreKunde() {
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (kundeId) {
         if (kundeId) {
-            if (lagreBillett(kundeId)) {
-                lagreKredittInfo(kundeId);
-            }
+            lagreBillett(kundeId)
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");
@@ -111,13 +109,10 @@ function lagreBillett(kundeId) {
     billett.kundeId = kundeId;
     $.post(url, billett, function (OK) {
         if (OK) {
-           // window.location.href = 'index.html';
-            return true;
+            lagreKredittInfo(kundeId);
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");
-            return false;
-
         }
     });
 }
