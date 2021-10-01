@@ -148,6 +148,9 @@ function getKlassetType() {
 }
 
 $(function() {
+
+    hentAlleDestinasjoner();
+
     if (getTicketType() === 'En vei') {
         hideReturDatoInput()
     }
@@ -162,6 +165,29 @@ $(function() {
     deaktivereTidligereDatoer(avgangInput, currentDate);
     deaktivereTidligereDatoer(returInput, currentDate);
 })
+
+function hentAlleDestinasjoner() {
+    const url = "Kunde/HentAlleDestinasjon";
+    $.get(url, function (destinasjoner) {
+        leggDestinasjonerTilDropDownFraTil(destinasjoner);
+    });
+}
+
+function leggDestinasjonerTilDropDownFraTil(destinasjoner) {
+    const reiseMalFraInput = document.getElementById("reiseMalFra"); 
+    const reiseMalTilInput = document.getElementById("reiseMalTil");
+    for (let destinasjon of destinasjoner) {
+        let optionElement = document.createElement("option");
+        optionElement.textContent = destinasjon.sted; 
+        reiseMalFraInput.appendChild(optionElement); 
+    }
+    
+    for (let i = destinasjoner.length - 1; i > 0; i--) {
+        let optionElement = document.createElement("option");
+        optionElement.textContent = destinasjoner[i].sted; 
+        reiseMalTilInput.appendChild(optionElement); 
+    }
+}
 
 function onAvgangChange() {
     if (getTicketType() === 'Retur') {
