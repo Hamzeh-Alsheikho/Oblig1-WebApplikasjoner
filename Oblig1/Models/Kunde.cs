@@ -10,7 +10,7 @@ namespace WebApplication24.Models
     {
         public int Id { get; set; }
         
-        public string DestinationFrom { get; set; }
+       /* public string DestinationFrom { get; set; }
         
         public string DestinationTo { get; set; }
         
@@ -25,7 +25,7 @@ namespace WebApplication24.Models
        
         public int AntallAdult { get; set; }
 
-        public int AntallChild { get; set; }
+        public int AntallChild { get; set; }*/
 
         [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
         public string Fornavn { get; set; }

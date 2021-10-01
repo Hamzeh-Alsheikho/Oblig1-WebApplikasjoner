@@ -17,7 +17,7 @@ namespace Oblig1.Models
         public string Telfonnr { get; set; }
         public string Epost { get; set; }
         public string Adresse { get; set; }
-        virtual public Ticket Ticket { get; set; }
+        virtual public Billett Billetter { get; set; }
         virtual public PostSteder PostSteder { get; set; }
         virtual public Kreditt Kreditt { get; set; }
     }
@@ -30,7 +30,7 @@ namespace Oblig1.Models
         public string Poststed { get; set; }
     }
 
-    public class Ticket
+    /*public class Ticket
     {
         public int Id { get; set; }
         public string DestinationFrom { get; set; }
@@ -41,7 +41,7 @@ namespace Oblig1.Models
         public string ReturnDato { get; set; }
         public int AntallAdult { get; set; }
         public int AntallChild { get; set; }
-    }
+    }*/
 
 
     public class KundeContext : DbContext
@@ -54,7 +54,7 @@ namespace Oblig1.Models
 
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<PostSteder> PostSteder { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Billett> Billetter { get; set; }
         public DbSet<Kreditt> Kreditt { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

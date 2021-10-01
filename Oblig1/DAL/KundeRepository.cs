@@ -43,16 +43,16 @@ namespace Oblig1.DAL
                     nyKundeRad.PostSteder = sjekkPoststed;
                 }
 
-                var nyTicket = new Ticket();
-                nyTicket.DestinationFrom = innKunde.DestinationFrom;
-                nyTicket.DestinationTo = innKunde.DestinationTo;
-                nyTicket.TicketType = innKunde.TicketType;
-                nyTicket.TicketClass = innKunde.TicketClass;
-                nyTicket.AntallAdult = innKunde.AntallAdult;
-                nyTicket.AntallChild = innKunde.AntallChild;
-                nyTicket.DepartureDato = innKunde.DepartureDato;
-                nyTicket.ReturnDato = innKunde.ReturnDato;
-                nyKundeRad.Ticket = nyTicket;
+                /*var nyBillett = new Billett();
+                nyBillett.DestinationFrom = innKunde.DestinationFrom;
+                nyBillett.DestinationTo = innKunde.DestinationTo;
+                nyBillett.TicketType = innKunde.TicketType;
+                nyBillett.TicketClass = innKunde.TicketClass;
+                nyBillett.AntallAdult = innKunde.AntallAdult;
+                nyBillett.AntallChild = innKunde.AntallChild;
+                nyBillett.DepartureDato = innKunde.DepartureDato;
+                nyBillett.ReturnDato = innKunde.ReturnDato;
+                nyKundeRad.Ticket = nyBillett;*/
 
                 _kundeDB.Kunder.Add(nyKundeRad);
                 await _kundeDB.SaveChangesAsync();
@@ -87,6 +87,35 @@ namespace Oblig1.DAL
             }
         }
 
+        public async Task<bool> LagreBillett(Billett innBillett)
+        {
+            try
+            {
+                var nyBillett = new Billett();
+                nyBillett.DestinationFrom = innBillett.DestinationFrom;
+                nyBillett.DestinationTo = innBillett.DestinationTo;
+                nyBillett.TicketType = innBillett.TicketType;
+                nyBillett.TicketClass = innBillett.TicketClass;
+                nyBillett.AntallAdult = innBillett.AntallAdult;
+                nyBillett.AntallChild = innBillett.AntallChild;
+                nyBillett.DepartureDato = innBillett.DepartureDato;
+                nyBillett.ReturnDato = innBillett.ReturnDato;
+       
+
+                _kundeDB.Billetter.Add(nyBillett);
+                await _kundeDB.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+                return false;
+            }
+        }
+
+
+
+
         public async Task<List<Kunde>> HentAlle()
         {
             try
@@ -94,14 +123,14 @@ namespace Oblig1.DAL
                 List<Kunde> alleKundene = await _kundeDB.Kunder.Select(innKunde => new Kunde
                 {
                     Id = innKunde.Id,
-                    DestinationFrom = innKunde.Ticket.DestinationFrom,
+                    /*DestinationFrom = innKunde.Ticket.DestinationFrom,
                     DestinationTo = innKunde.Ticket.DestinationTo,
                     TicketType = innKunde.Ticket.TicketType,
                     TicketClass = innKunde.Ticket.TicketClass,
                     AntallAdult = innKunde.Ticket.AntallAdult,
                     AntallChild = innKunde.Ticket.AntallChild,
                     DepartureDato = innKunde.Ticket.DepartureDato,
-                    ReturnDato = innKunde.Ticket.ReturnDato,
+                    ReturnDato = innKunde.Ticket.ReturnDato,*/
                     Fornavn = innKunde.Fornavn,
                     Etternavn = innKunde.Etternavn,
                     Telfonnr = innKunde.Telfonnr,
@@ -141,14 +170,14 @@ namespace Oblig1.DAL
                     }
                 }
 
-                enKunde.Ticket.DestinationFrom = endreKunde.DestinationFrom;
+                /*enKunde.Ticket.DestinationFrom = endreKunde.DestinationFrom;
                 enKunde.Ticket.DestinationTo = endreKunde.DestinationTo;
                 enKunde.Ticket.TicketType = endreKunde.TicketType;
                 enKunde.Ticket.TicketClass = endreKunde.TicketClass;
                 enKunde.Ticket.AntallAdult = endreKunde.AntallAdult;
                 enKunde.Ticket.AntallChild = endreKunde.AntallChild;
                 enKunde.Ticket.DepartureDato = endreKunde.DepartureDato;
-                enKunde.Ticket.ReturnDato = endreKunde.ReturnDato;
+                enKunde.Ticket.ReturnDato = endreKunde.ReturnDato;*/
                 enKunde.Fornavn = endreKunde.Fornavn;
                 enKunde.Etternavn = endreKunde.Etternavn;
                 enKunde.Telfonnr = endreKunde.Telfonnr;
@@ -172,14 +201,14 @@ namespace Oblig1.DAL
                 var enKunde = new Kunde()
                 {
                     Id = hentedKunde.Id,
-                    DestinationFrom = hentedKunde.Ticket.DestinationFrom,
+                    /*DestinationFrom = hentedKunde.Ticket.DestinationFrom,
                     DestinationTo = hentedKunde.Ticket.DestinationTo,
                     TicketType = hentedKunde.Ticket.TicketType,
                     TicketClass = hentedKunde.Ticket.TicketClass,
                     AntallAdult = hentedKunde.Ticket.AntallAdult,
                     AntallChild = hentedKunde.Ticket.AntallChild,
                     DepartureDato = hentedKunde.Ticket.DepartureDato,
-                    ReturnDato = hentedKunde.Ticket.ReturnDato,
+                    ReturnDato = hentedKunde.Ticket.ReturnDato,*/
                     Fornavn = hentedKunde.Fornavn,
                     Etternavn = hentedKunde.Etternavn,
                     Telfonnr = hentedKunde.Telfonnr,
@@ -218,7 +247,8 @@ namespace Oblig1.DAL
            
                 _kundeDB.Kunder.RemoveRange(_kundeDB.Kunder);
                 _kundeDB.PostSteder.RemoveRange(_kundeDB.PostSteder);
-                _kundeDB.Tickets.RemoveRange(_kundeDB.Tickets);
+                _kundeDB.Kreditt.RemoveRange(_kundeDB.Kreditt);
+                _kundeDB.Billetter.RemoveRange(_kundeDB.Billetter);
                 await _kundeDB.SaveChangesAsync();
                 return true;
             }

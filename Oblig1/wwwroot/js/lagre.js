@@ -1,5 +1,5 @@
 ﻿let kunde = {}
-
+let billett = {}
 
 function valideringOgLagreKunde() {
     const reiseMalOK = valideringReiseMal();
@@ -39,8 +39,13 @@ function showKredittForm() {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
+        telfonnr: $("#telfonnr").val(),
+        epost: $("#epost").val(),
         postnr: $("#postnr").val(),
         poststed: $("#poststed").val(),
+    }
+
+    billett = {
         destinationFrom: $("#reiseMalFra").val(),
         destinationTo: $("#reiseMalTil").val(),
         antallAdult: $("#antallAdult").val(),
@@ -49,9 +54,8 @@ function showKredittForm() {
         departureDato: $("#avgang").val(),
         returnDato: $("#retur").val(),
         ticketClass: getKlassetType(),
-        telfonnr: $("#telfonnr").val(),
-        epost: $("#epost").val(),
-     }
+    }
+
     const kjopBillettForm = document.getElementById("kjopBillettForm");
     const kredittForm = document.getElementById("kredittForm");
     kjopBillettForm.classList.add("hidden")
@@ -69,7 +73,9 @@ function lagreKunde() {
     const url = "Kunde/Lagre";
     $.post(url, kunde, function (kundeId) {
         if (kundeId) {
-            lagreKredittInfo(kundeId);
+            if (lagreBillett(kundeId)) {
+                lagreKredittInfo(kundeId);
+            }
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");
@@ -96,6 +102,22 @@ function lagreKredittInfo(kundeId) {
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");
+        }
+    });
+}
+
+function lagreBillett(kundeId) {
+    const url = "Kunde/LagreBillett";
+    billett.kundeId = kundeId;
+    $.post(url, billett, function (OK) {
+        if (OK) {
+           // window.location.href = 'index.html';
+            return true;
+        }
+        else {
+            $("#feil").html("Feil i db - prøv igjen senere");
+            return false;
+
         }
     });
 }

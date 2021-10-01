@@ -113,5 +113,19 @@ namespace WebApplication24.Controllers
             // return BadRequest("Feil i inputvalidering på server");
         }
 
+        public async Task<ActionResult> LagreBillett(Billett billett)
+        {
+            bool returnOk = await _kundeDB.LagreBillett(billett);
+            if (!returnOk)
+            {
+                _kundeLog.LogInformation("Kunne ikke lagre Billett");
+                return BadRequest("Kunne ikke lagre Billett");
+            }
+            return Ok("Billett ble lagret");
+
+            // _kundeLog.LogInformation("Feil i inputValidering");
+            // return BadRequest("Feil i inputvalidering på server");
+        }
+
     }
 }
