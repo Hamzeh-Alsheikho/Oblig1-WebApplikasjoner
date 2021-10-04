@@ -45,11 +45,22 @@ namespace WebApplication24.Controllers
             List<Kunde> alleKunder = await _kundeDB.HentAlle();
             return Ok(alleKunder);
         } 
+        
         public async Task<ActionResult<Billett>> HentAlleBilletter()
         {
             List<Billett> alleBilletter = await _kundeDB.HentAlleBilletter();
             return Ok(alleBilletter);
         }
+
+        public async Task<ActionResult<Billett>> HentEnBillett(int kundeId) {
+            Billett billett = await _kundeDB.HentEnBillett(kundeId);
+            if (billett == null) {
+                _kundeLog.LogInformation("Kunne ikke finne kunden");
+                return NotFound("Kunne ikke finne kunden");
+            }
+            return Ok(billett);
+		 }
+
         public async Task<ActionResult<Destinasjon>> HentAlleDestinasjon()
         {
             List<Destinasjon> alleDestinasjon = await _kundeDB.HentAlleDestinasjon();

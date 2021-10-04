@@ -17,26 +17,19 @@ function valideringOgEndreKunde() {
     }
 }
 
-$(function () {
-      const id = window.location.search.substring(1);
-    const url = "Kunde/HentEn?" + id;
-    $.get(url, function (kunde) {
-        $("#fornavn").val(kunde.fornavn);
-        $("#etternavn").val(kunde.etternavn);
-        $("#adresse").val(kunde.adresse);
-        $("#postnr").val(kunde.postnr);
-        $("#poststed").val(kunde.poststed);
-        $("#reiseMalFra").val(kunde.destinationFrom);
-        $("#reiseMalTil").val(kunde.destinationTo);
-        $("#antallAdult").val(kunde.antallAdult);
-        $("#antallChild").val(kunde.antallChild);
-        $("ticketType").val(kunde.ticketType);
-        $("#avgang").val(kunde.departureDato);
-        $("#retur").val(kunde.returnDato);
-        $("#telfonnr").val(kunde.telfonnr);
-        $("#epost").val(kunde.epost);
+function hentEnBillett(kundeId) {
+    const url = "Kunde/HentEnBillett?" + kundeId;
+    $.get(url, function (billett) { 
+        console.log(billett);
+        $("#reiseMalFra").val(billett.destinationFrom);
+        $("#reiseMalTil").val(billett.destinationTo);
+        $("#antallAdult").val(billett.antallAdult);
+        $("#antallChild").val(billett.antallChild);
+        $("ticketType").val(billett.ticketType);
+        $("#avgang").val(billett.departureDato);
+        $("#retur").val(billett.returnDato);
 
-        if (kunde.ticketType === 'En vei') {
+        if (billett.ticketType === 'En vei') {
             const singleInput = document.getElementById("single");
             singleInput.setAttribute("checked", "true");
         } else {
@@ -44,10 +37,10 @@ $(function () {
             returInput.setAttribute("checked", "true")
         }
 
-        if (kunde.ticketClass === "Economy") {
+        if (billett.ticketClass === "Economy") {
             const economyInput = document.getElementById("economy");
             economyInput.setAttribute("checked", "true")
-        } else if (kunde.ticketClass === "Business") {
+        } else if (billett.ticketClass === "Business") {
             const businessInput = document.getElementById("business");
             businessInput.setAttribute("checked", "true")
         } else {
@@ -58,24 +51,27 @@ $(function () {
         if (getTicketType() === 'En vei') {
             hideReturDatoInput()
         }
+    })
+}
 
-        const avgangInput = document.getElementById("avgang");
-        const returInput = document.getElementById("retur");
-    
-        setDefaultDato(avgangInput);
-        setDefaultDato(returInput);
-    
-        const currentDate = getCurrentDateString();
-        deaktivereTidligereDatoer(avgangInput, currentDate);
-        deaktivereTidligereDatoer(returInput, currentDate);
-
-        hentAlleDestinasjoner()
-
+$(function () {
+    hentAlleDestinasjoner()
+    const id = window.location.search.substring(1);"
+   
+    const url = "Kunde/HentEn?" + id;
+    $.get(url, function (kunde) {
+        $("#fornavn").val(kunde.fornavn);
+        $("#etternavn").val(kunde.etternavn);
+        $("#adresse").val(kunde.adresse);
+        $("#postnr").val(kunde.postnr);
+        $("#poststed").val(kunde.poststed);
+        $("#telfonnr").val(kunde.telfonnr);
+        $("#epost").val(kunde.epost);
     }); 
 });
 
 function endreKunde() {
-        let returDate;
+    let returDate;
     const ticketType = getTicketType();
     if (ticketType === 'En vei') {
         returDate = $("#retur").val(" ");
@@ -120,6 +116,11 @@ function hentAlleDestinasjoner() {
     const url = "Kunde/HentAlleDestinasjon";
     $.get(url, function (destinasjoner) {
         leggDestinasjonerTilDropDownFraTil(destinasjoner);
+        if (destinasjoner) {
+            const id = window.location.search.substring(1); //"id=3"
+            const kundeId = id.split("=")[1]
+            hentEnBillett("kundeId=" + kundeId);//Kunde/HentEnBillett?kundeID=3
+	    }
     });
 }
 

@@ -130,33 +130,6 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<List<Billett>> HentAlleBilletter()
-        {
-            try
-            {
-                List<Billett> alleBilletter = await _kundeDB.Billetter.Select(innBillett => new Billett
-                {
-                    Id = innBillett.Id,
-                    KundeId = innBillett.KundeId,
-                    DestinationFrom = innBillett.DestinationFrom,
-                    DestinationTo = innBillett.DestinationTo,
-                    TicketType = innBillett.TicketType,
-                    TicketClass = innBillett.TicketClass,
-                    AntallAdult = innBillett.AntallAdult,
-                    AntallChild = innBillett.AntallChild,
-                    DepartureDato = innBillett.DepartureDato,
-                    ReturnDato = innBillett.ReturnDato,
-    
-
-                }).ToListAsync();
-
-                return alleBilletter;
-            }
-            catch
-            {
-                return null;
-            }
-        }
         public async Task<List<Destinasjon>> HentAlleDestinasjon()
         {
             try
@@ -266,6 +239,60 @@ namespace Oblig1.DAL
             catch
             {
                 return false;
+            }
+        }
+
+        public async Task<List<Billett>> HentAlleBilletter()
+        {
+            try
+            {
+                List<Billett> alleBilletter = await _kundeDB.Billetter.Select(innBillett => new Billett
+                {
+                    Id = innBillett.Id,
+                    KundeId = innBillett.KundeId,
+                    DestinationFrom = innBillett.DestinationFrom,
+                    DestinationTo = innBillett.DestinationTo,
+                    TicketType = innBillett.TicketType,
+                    TicketClass = innBillett.TicketClass,
+                    AntallAdult = innBillett.AntallAdult,
+                    AntallChild = innBillett.AntallChild,
+                    DepartureDato = innBillett.DepartureDato,
+                    ReturnDato = innBillett.ReturnDato,
+    
+
+                }).ToListAsync();
+
+                return alleBilletter;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<Billett> HentEnBillett(int kundeId) {
+            try
+            {
+                Billett enBillett = await _kundeDB.Billetter.FindAsync(kundeId);
+                var hentetBillett = new Billett()
+                {
+                    Id = enBillett.Id,
+                    KundeId = enBillett.KundeId,
+                    DestinationTo = enBillett.DestinationTo,
+                    DestinationFrom = enBillett.DestinationFrom,
+                    TicketType = enBillett.TicketType,
+                    TicketClass = enBillett.TicketClass,
+                    DepartureDato = enBillett.DepartureDato,
+                    ReturnDato = enBillett.ReturnDato,
+                    AntallAdult = enBillett.AntallAdult,
+                    AntallChild = enBillett.AntallChild
+
+                };
+                return hentetBillett;
+            }
+            catch
+            {
+                return null;
             }
         }
     }
