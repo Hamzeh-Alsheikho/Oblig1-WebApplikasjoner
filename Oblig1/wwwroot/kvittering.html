@@ -18,11 +18,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h1 class="text-uppercase">Kvittering</h1>
-                            <div class="billed"><span class="font-weight-bold text-uppercase">Navn:</span><span class="ml-1">Hitomi</span></div>
-                            <div class="billed"><span class="font-weight-bold text-uppercase">Telefonnr:</span><span class="ml-1">123456789</span></div>
-                            <div class="billed"><span class="font-weight-bold text-uppercase">Adress:</span><span class="ml-1">Askerveien 26A</span></div>
-                            <div class="billed"><span class="font-weight-bold text-uppercase">Billett ID:</span><span class="ml-1">#1345345</span></div>
-                            <div class="billed"><span class="font-weight-bold text-uppercase">Dato:</span><span class="ml-1">04/10/2021</span></div>
+                            <div class="billed"><span class="font-weight-bold text-uppercase">Navn:</span><span class="ml-1" id="navn"></span></div>
+                            <div class="billed"><span class="font-weight-bold text-uppercase">Telefonnr:</span><span class="ml-1" id="telefonnr"></span></div>
+                            <div class="billed"><span class="font-weight-bold text-uppercase">Adress:</span><span class="ml-1" id="adress"></span></div>
+                            <div class="billed"><span class="font-weight-bold text-uppercase">Billett ID:</span><span class="ml-1" id="billettId"></span></div>
+                            <div class="billed"><span class="font-weight-bold text-uppercase">Dato:</span><span class="ml-1" id="currentDate"></span></div>
 
                         </div>
                         <div class="col-md-6 text-right mt-3">
@@ -35,71 +35,95 @@
                                 <thead>
                                     <tr>
                                         <th>Fra</th>
+                                        <th></th>
+                                        <th></th>
                                         <th>Til</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Oslo</td>
-                                        <td>Bergen</td>
+                                        <td id="fra"></td>
+                                        <th></th>
+                                        <th></th>
+                                        <td id="til"></td>
                                     </tr>
                                 </tbody>
 
                                 <thead>
                                     <tr>
+                                        
                                         <th>Fra Dato</th>
+                                        <th></th>
+                                        <th></th>
                                         <th>Til Dato</th>
                                     </tr>
 
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>10.09.2021</td>
-                                        <td>11.09.2021</td>
+                                        <td id="datoFra"></td>
+                                        <th></th>
+                                        <th></th>
+                                        <td id="datoTil"></td>
                                     </tr>
                                 </tbody>
 
                                 <thead>
                                     <tr>
                                         <th>Antall Voksen</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
-                                <thead />
+                                </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
+                                        <td id="antallVoksen"></td>
                                     </tr>
-                                <tbody />
+                                </tbody>
 
                                 <thead>
 
                                     <tr>
                                         <th>Antall Barn</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>2</td>
+                                        <td id="antallBarn"></td>
 
                                     </tr>
                                 </tbody>
                                 <thead>
                                     <tr>
                                         <th>Billettype</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Tur/retur</td>
+                                        <td id="billettType"></td>
                                     </tr>
                                 </tbody>
                                 <thead>
                                     <tr>
                                         <th>Klasse</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Førsteklasse</td>
+                                        <td id="billettKlasse"></td>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </tbody>
                             </table>

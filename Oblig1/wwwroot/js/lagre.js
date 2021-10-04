@@ -96,7 +96,7 @@ function lagreKredittInfo(kundeId) {
     const url = "Kunde/LagreKreditt";
     $.post(url, kredittInfo, function (OK) {
         if (OK) {
-            window.location.href = 'kvittering.html';
+            window.location.href = 'kvittering.html?id=' + kundeId;
         }
         else {
             $("#feil").html("Feil i db - prøv igjen senere");

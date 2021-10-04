@@ -9,10 +9,11 @@ namespace Oblig1.Models
 {
     public class Billett
     {
-        public int Id { get; set; }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
+
         public int KundeId { get; set; }
+
         public string DestinationFrom { get; set; }
 
         public string DestinationTo { get; set; }
@@ -24,7 +25,6 @@ namespace Oblig1.Models
         public string DepartureDato { get; set; }
 
         public string ReturnDato { get; set; }
-
 
         public int AntallAdult { get; set; }
 
