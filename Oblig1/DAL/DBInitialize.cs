@@ -31,8 +31,8 @@ namespace Oblig1.Models
             var ticket1 = new Billett { DestinationFrom = "Oslo", DestinationTo = "Bergen", TicketType = "En vei", TicketClass = "Business", AntallAdult = 2, AntallChild = 0, DepartureDato = "2021-11-23", ReturnDato ="", };
             var ticket2 = new Billett { DestinationFrom = "Stavanger", DestinationTo = "Danmark", TicketType = "Retur", TicketClass = "Economy", AntallAdult = 1, AntallChild = 1, DepartureDato = "2021-12-24", ReturnDato ="2023-01-03"};
             
-            var kunde1 = new Kunder { Fornavn = "Tor", Etternavn = "Nordman", Telfonnr = "004745142581", Epost = "xxx@oslomet.no", Adresse = "Pilestredet 35", PostSteder = poststed1, Billetter = ticket1};
-            var kunde2 = new Kunder { Fornavn = "Morten", Etternavn = "Nordman", Telfonnr = "004745145218", Epost = "zzz@oslomet.no", Adresse = "Pilestredet 32", PostSteder = poststed2, Billetter = ticket2};
+            var kunde1 = new Kunder { Id = 1, Fornavn = "Tor", Etternavn = "Nordman", Telfonnr = "004745142581", Epost = "xxx@oslomet.no", Adresse = "Pilestredet 35", PostSteder = poststed1, Billetter = ticket1};
+            var kunde2 = new Kunder { Id = 2, Fornavn = "Morten", Etternavn = "Nordman", Telfonnr = "004745145218", Epost = "zzz@oslomet.no", Adresse = "Pilestredet 32", PostSteder = poststed2, Billetter = ticket2};
 
          
             context.Kunder.Add(kunde1);

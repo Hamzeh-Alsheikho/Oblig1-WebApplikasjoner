@@ -22,15 +22,7 @@ namespace Oblig1.Models
         virtual public Kreditt Kreditt { get; set; }
     }
 
-    public class PostSteder
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Postnr { get; set; }
-        public string Poststed { get; set; }
-    }
-
-    public class KundeContext : DbContext
+      public class KundeContext : DbContext
     {
        
         public KundeContext(DbContextOptions<KundeContext> options) : base(options)

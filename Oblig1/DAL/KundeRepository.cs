@@ -226,6 +226,7 @@ namespace Oblig1.DAL
                     Adresse = hentedKunde.Adresse,
                     Postnr = hentedKunde.PostSteder.Postnr,
                     Poststed = hentedKunde.PostSteder.Poststed
+
                 };
                 return enKunde;
             }
