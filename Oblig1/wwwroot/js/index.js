@@ -23,7 +23,7 @@ function hentAlleKunder() {
 function formaterKunder(kunder, billetter) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>Fornavn</th><th>Etternavn</th><th>Telfonnr</th><th>Epost</th><th>Adresse</th><th>Postnr</th><th>Poststed</th><th>Fra</th><th>Til</th><th>Billettypet</th><th>Klasset</th><th>Voksen</th><th>Barn</th><th>Avgang Dato</th><th>Retur Dato</th><th></th><th></th>" +
+        "<th>Fornavn</th><th>Etternavn</th><th>Telfonnr</th><th>Epost</th><th>Adresse</th><th>Postnr</th><th>Poststed</th><th>Fra</th><th>Til</th><th>Billettypet</th><th>Klasset</th><th>Voksen</th><th>Barn</th><th>Avgang Dato</th><th>Retur Dato</th>" +
         "</tr>";
     for (let kunde of kunder) {
         for (let billett of billetter) {
@@ -47,8 +47,6 @@ function formaterKunder(kunder, billetter) {
                     "<td>" + billett.antallChild + "</td>" +
                     "<td>" + billett.departureDato + "</td>" +
                     "<td>" + billett.returnDato + "</td>" +
-                    "<td> <a class='btn btn-primary' href='endre.html?id=" + kunde.id + "'>Endre</a></td>" +
-                    "<td> <button class='btn btn-danger' onclick='slettBillett(" + kunde.id + ")'>Slett</button></td>" +
                     "</tr>";
                 }
             }

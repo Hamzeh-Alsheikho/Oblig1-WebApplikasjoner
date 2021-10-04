@@ -67,22 +67,6 @@ namespace WebApplication24.Controllers
             return Ok(alleDestinasjon);
         }
 
-        public async Task<ActionResult> Endre(Kunde endreKunde)
-        {
-            if(ModelState.IsValid)
-            { 
-            bool returnOk = await _kundeDB.Endre(endreKunde);
-                if (!returnOk)
-                {
-                    _kundeLog.LogInformation("Kunne ikke endre kunden");
-                    return NotFound("Kunne ikke endre kunden");
-                }
-                return Ok("Kunde ble endret");
-            }
-            _kundeLog.LogInformation("Feil i inputValidering");
-            return BadRequest("Feil i inputvalidering på server");
-        }
-
         public async Task<ActionResult> HentEn(int id)
         {
             if (ModelState.IsValid)
@@ -97,17 +81,6 @@ namespace WebApplication24.Controllers
             }
             _kundeLog.LogInformation("Feil i inputValidering");
             return BadRequest("Feil i inputValidering på server");
-        }
-
-        public async Task<ActionResult> Slett(int id)
-        {
-            bool returnOk = await _kundeDB.Slett(id);
-            if (!returnOk)
-            {
-                _kundeLog.LogInformation("Kunne ikke slette kunden");
-                return NotFound("Kunne ikke slette kunden");
-            }
-            return Ok("Kunde ble slettet");
         }
 
         public async Task<ActionResult> SlettAlle()

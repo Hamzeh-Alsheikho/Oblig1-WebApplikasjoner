@@ -149,41 +149,6 @@ namespace Oblig1.DAL
             }
         }
 
-        public async Task<bool> Endre(Kunde endreKunde)
-        {
-            try
-            {
-                Kunder enKunde = await _kundeDB.Kunder.FindAsync(endreKunde.Id);
-                if (enKunde.PostSteder.Postnr != endreKunde.Postnr)
-                {
-                    var sjekkPoststed = _kundeDB.PostSteder.Find(endreKunde.Postnr);
-                    if (sjekkPoststed == null)
-                    {
-                        var nyPoststedsRad = new PostSteder();
-                        nyPoststedsRad.Postnr = endreKunde.Postnr;
-                        nyPoststedsRad.Poststed = endreKunde.Poststed;
-                        enKunde.PostSteder = nyPoststedsRad;
-                    }
-                    else
-                    {
-                        enKunde.PostSteder.Postnr = endreKunde.Postnr;
-                    }
-                }
-                enKunde.Fornavn = endreKunde.Fornavn;
-                enKunde.Etternavn = endreKunde.Etternavn;
-                enKunde.Telfonnr = endreKunde.Telfonnr;
-                enKunde.Epost = endreKunde.Epost;
-                enKunde.Adresse = endreKunde.Adresse;
-
-                await _kundeDB.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public async Task<Kunde> HentEn(int id)
         {
             try
@@ -206,21 +171,6 @@ namespace Oblig1.DAL
             catch
             {
                 return null;
-            }
-        }
-
-        public async Task<bool> Slett(int id)
-        {
-            try
-            {
-                Kunder enKunde = await _kundeDB.Kunder.FindAsync(id);
-                _kundeDB.Kunder.Remove(enKunde);
-                await _kundeDB.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
             }
         }
 

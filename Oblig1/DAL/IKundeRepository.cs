@@ -11,9 +11,7 @@ namespace Oblig1.DAL
     {
         Task<int> Lagre(Kunde innKunde);
         Task<List<Kunde>> HentAlle();
-        Task<bool> Endre(Kunde endreKunde);
         Task<Kunde> HentEn(int id);
-        Task<bool> Slett(int id);
         Task<bool> SlettAlle();
         Task<bool> LagreKreditt(Kreditt kredittInfo);
         Task<bool> LagreBillett(Billett billett);
