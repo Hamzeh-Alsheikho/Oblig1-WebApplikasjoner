@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -148,6 +149,25 @@ namespace Oblig1.DAL
                 return null;
             }
         }
+        
+        public IEnumerable HentGyldigDestinasjoner(int desintasjonId) {
+            IEnumerable destinasjoner = null;
+	        if (desintasjonId == 1) {
+                destinasjoner = _kundeDB.Destinasjoner.Where(d => d.Id > 1 && d.Id < 4);
+	        } else if (desintasjonId == 2) { 
+                destinasjoner = _kundeDB.Destinasjoner.Where(d => d.Id == 1 || d.Id > 2 && d.Id < 5);
+	        } else if (desintasjonId == 3) { 
+                destinasjoner = _kundeDB.Destinasjoner.Where(d => d.Id > 0 && d.Id < 3 || d.Id == 4);
+	        } else if (desintasjonId == 4) { 
+                destinasjoner = _kundeDB.Destinasjoner.Where(d => d.Id < 3 || d.Id > 4 && d.Id <= 6);
+	        } else if (desintasjonId == 5) { 
+                destinasjoner = _kundeDB.Destinasjoner.Where(d => d.Id < 5);
+	        } else { 
+                destinasjoner = _kundeDB.Destinasjoner.Where(d => d.Id < 4);
+	        }
+
+            return destinasjoner;
+	    }
 
         public async Task<Kunde> HentEn(int id)
         {

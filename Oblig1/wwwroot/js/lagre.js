@@ -44,10 +44,10 @@ function showKredittForm() {
         postnr: $("#postnr").val(),
         poststed: $("#poststed").val(),
     }
-
+    //$("#myselect option:selected").text();
     billett = {
-        destinationFrom: $("#reiseMalFra").val(),
-        destinationTo: $("#reiseMalTil").val(),
+        destinationFrom: $("#reiseMalFra option:selected").text(),
+        destinationTo: $("#reiseMalTil option:selected").text(),
         antallAdult: $("#antallAdult").val(),
         antallChild: $("#antallChild").val(),
         ticketType: getTicketType(),
@@ -169,24 +169,37 @@ $(function() {
 function hentAlleDestinasjoner() {
     const url = "Kunde/HentAlleDestinasjon";
     $.get(url, function (destinasjoner) {
-        leggDestinasjonerTilDropDownFraTil(destinasjoner);
+        const reiseMalFraInput = document.getElementById("reiseMalFra"); 
+        leggDestinasjonerTilDropDown(destinasjoner, reiseMalFraInput, "Fra");
     });
 }
 
-function leggDestinasjonerTilDropDownFraTil(destinasjoner) {
-    const reiseMalFraInput = document.getElementById("reiseMalFra"); 
-    const reiseMalTilInput = document.getElementById("reiseMalTil");
+function leggDestinasjonerTilDropDown(destinasjoner, input, type) {
+    removeAll(input, type)
     for (let destinasjon of destinasjoner) {
         let optionElement = document.createElement("option");
+        optionElement.setAttribute("value", destinasjon.id);
         optionElement.textContent = destinasjon.sted; 
-        reiseMalFraInput.appendChild(optionElement); 
+        input.appendChild(optionElement); 
     }
-    
-    for (let i = destinasjoner.length - 1; i > 0; i--) {
-        let optionElement = document.createElement("option");
-        optionElement.textContent = destinasjoner[i].sted; 
-        reiseMalTilInput.appendChild(optionElement); 
+}
+
+function removeAll(selectBox, destinationType) {
+    let index = 0;
+    if (destinationType === "Fra") {
+        index = 1
     }
+    while (selectBox.options.length > index) {
+        selectBox.remove(index);
+    }
+}
+
+function hentGyldigDestinasjoner(id) {
+    const url = "Kunde/HentGyldigDestinasjoner?destinasjonId=" + id;
+    $.get(url, function (destinasjoner) {
+        const reiseTilInput = document.getElementById("reiseMalTil");
+        leggDestinasjonerTilDropDown(destinasjoner, reiseTilInput, "Til")
+    })
 }
 
 function onAvgangChange() {

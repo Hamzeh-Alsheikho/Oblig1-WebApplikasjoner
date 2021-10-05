@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,6 +67,11 @@ namespace WebApplication24.Controllers
             List<Destinasjon> alleDestinasjon = await _kundeDB.HentAlleDestinasjon();
             return Ok(alleDestinasjon);
         }
+
+        public IEnumerable HentGyldigDestinasjoner(int destinasjonId) {
+            IEnumerable destinasjoner = _kundeDB.HentGyldigDestinasjoner(destinasjonId);
+            return destinasjoner;
+	    }
 
         public async Task<ActionResult> HentEn(int id)
         {
