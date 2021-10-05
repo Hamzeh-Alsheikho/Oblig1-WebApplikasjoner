@@ -101,6 +101,8 @@ namespace WebApplication24.Controllers
 
          public async Task<ActionResult> LagreKreditt(Kreditt kredittInfo)
         {
+            if (ModelState.IsValid)
+            {
                 bool returnOk = await _kundeDB.LagreKreditt(kredittInfo);
                 if (!returnOk)
                 {
@@ -108,6 +110,9 @@ namespace WebApplication24.Controllers
                     return BadRequest("Kunne ikke lagre kredittinfo");
                 }
                 return Ok("Kredittinfo ble lagret");
+            }
+            _kundeLog.LogInformation("Feil i inputValidering");
+            return BadRequest("Feil i inputValidering på server");
         }
 
         public async Task<ActionResult> LagreBillett(Billett billett)

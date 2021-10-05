@@ -10,10 +10,10 @@ namespace WebApplication24.Models
     {
         public int Id { get; set; }
 
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ.\ \-]{2,20}")]
         public string Fornavn { get; set; }
 
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ.\ \-]{2,20}")]
         public string Etternavn { get; set; }
 
         [RegularExpression(@"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{2,7}")]

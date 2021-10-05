@@ -41,7 +41,7 @@
 
 #buttonKjop {
   font-size: 2rem;
-  font-weight: 350;
+  font-weight: 400;
   border: 1px solid rgb(94, 94, 94);
   border-radius: 0;
   background-color: #0f3257;
@@ -225,4 +225,8 @@ form label {
 
 .hidden {
   visibility: hidden;
+}
+
+#buttonKvittering {
+  width: 100px;
 }

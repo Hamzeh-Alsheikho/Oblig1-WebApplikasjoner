@@ -8,7 +8,7 @@ function makeBorderInitial(input) {
 function valideringReiseMal() {
     const fra = $("#reiseMalFra").val();
     const til = $("#reiseMalTil").val();
-    if (fra === til) {
+    if (fra === til || til === "") {
         $("#reisemalVelgFeil").html("Velg riktig reisemål");
         makeBorderRed(document.getElementById("reiseMalFra"));
         makeBorderRed(document.getElementById("reiseMalTil"));

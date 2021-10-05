@@ -26,7 +26,12 @@ namespace Oblig1.Models
             var destinasjon3 = new Destinasjon { Id = 3, Sted = "Stavanger" };
             var destinasjon4 = new Destinasjon { Id = 4, Sted = "Bergen" };
             var destinasjon5 = new Destinasjon { Id = 5, Sted = "Kiel" };
-            var destinasjon6 = new Destinasjon { Id = 6, Sted = "Trondheim" };
+            var destinasjon6 = new Destinasjon { Id = 6, Sted = "Kristiansand" };
+            var destinasjon7 = new Destinasjon { Id = 7, Sted = "Tromsø" };
+            var destinasjon8 = new Destinasjon { Id = 8, Sted = "Svalbard" };
+            var destinasjon9 = new Destinasjon { Id = 9, Sted = "Bodø" };
+            var destinasjon10 = new Destinasjon { Id = 10, Sted = "Ålesund" };
+            var destinasjon11 = new Destinasjon { Id = 11, Sted = "Lofoten" };
 
             var ticket1 = new Billett { KundeId=3,DestinationFrom = "Oslo", DestinationTo = "Bergen", TicketType = "En vei", TicketClass = "Business", AntallAdult = 2, AntallChild = 0, DepartureDato = "2021-11-23", ReturnDato ="", };
             var ticket2 = new Billett { KundeId = 4, DestinationFrom = "Stavanger", DestinationTo = "Danmark", TicketType = "Retur", TicketClass = "Economy", AntallAdult = 1, AntallChild = 1, DepartureDato = "2021-12-24", ReturnDato ="2023-01-03"};
@@ -45,6 +50,11 @@ namespace Oblig1.Models
             context.Destinasjoner.Add(destinasjon4);
             context.Destinasjoner.Add(destinasjon5);
             context.Destinasjoner.Add(destinasjon6);
+            context.Destinasjoner.Add(destinasjon7);
+            context.Destinasjoner.Add(destinasjon8);
+            context.Destinasjoner.Add(destinasjon9);
+            context.Destinasjoner.Add(destinasjon10);
+            context.Destinasjoner.Add(destinasjon11);
         
 
             context.SaveChanges();
